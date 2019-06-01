@@ -1,35 +1,51 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
+import './components/ArtistCard'
+import ArtistCard from './components/ArtistCard';
+
+const ArtistContainer = ({artists}) => {
+  return (
+    <div style={{
+      padding: '25px',
+      display: 'flex',
+      flexDirection: 'row',
+      flexWrap: 'wrap'
+    }}>
+      {
+        artists.map(a => <ArtistCard artist={a}/>)
+      }
+    </div>
+  )
+}
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      message: 'Click the button to load data!'
+      message: 'Click the button to load data!',
+      artists: []
     }
   }
 
-  fetchData = () => {
-    axios.get('/api/artists') // You can simply make your requests to "/api/whatever you want"
-    .then((response) => {
-      // handle success
-      console.log(response.data) // The entire response from the Rails API
+  componentDidMount() {
+    this.fetchData()
+  }
 
-      console.log(response.data.message) // Just the message
+  fetchData = () => {
+    axios.get('/api/artists')
+    .then((response) => {
       this.setState({
-        message: response.data.artists.map(i => i.name)
+        artists: response.data.artists
       });
     }) 
   }
 
   render() {
+    const {artists} = this.state
     return (
       <div className="App">
-        <h1>{ this.state.message }</h1>
-        <button onClick={this.fetchData} >
-          Fetch Data
-        </button>        
+        <ArtistContainer artists={artists}/>  
       </div>
     );
   }

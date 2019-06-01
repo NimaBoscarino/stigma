@@ -23,6 +23,10 @@ Photo.all.each do |a|
   a.destroy
 end
 
+Event.all.each do |a|
+  a.destroy
+end
+
 fearbear = Artist.create name: 'Olivia Harrison', username: 'fearbear', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/297314c8f89bd600f3e1100445469b40/5D981F74/t51.2885-19/s150x150/40970299_402813163583917_4079292631308304384_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net'
 
 nomi = Artist.create name: 'Nomi Chi', username: 'nomi_chi', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/9d6e02955a78315ab3f18e45ad3c7fb2/5D99ADFD/t51.2885-19/s150x150/23596480_1959154197667964_2542338945211957248_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net'
@@ -86,3 +90,28 @@ whizazaps.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/85fff92
 whizazaps.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/a8061b2d269718c8f02f9cc8f5b9a176/5D886B78/t51.2885-15/e35/61189892_1475081599299969_4869883458390896770_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
 
 whizazaps.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/f028abf8022e0dd74e223edaedaac93a/5D99C914/t51.2885-15/e35/61390923_138662523950333_7003645939359456046_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
+
+fearbear.events.create name: 'Flash Event', date: 1.days.from_now
+fearbear.events.create name: 'Flash Event', date: 4.days.from_now
+fearbear.events.create name: 'Flash Event', date: 3.days.ago
+fearbear.events.create name: 'Flash Event', date: 10.days.from_now
+
+nomi.events.create name: 'Flash Event', date: 7.days.from_now
+nomi.events.create name: 'Flash Event', date: 2.days.from_now
+nomi.events.create name: 'Flash Event', date: 12.days.ago
+nomi.events.create name: 'Flash Event', date: 0.days.from_now
+
+zox.events.create name: 'Flash Event', date: 5.days.from_now
+zox.events.create name: 'Flash Event', date: 3.days.from_now
+zox.events.create name: 'Flash Event', date: 4.days.ago
+zox.events.create name: 'Flash Event', date: 8.days.from_now
+
+al.events.create name: 'Flash Event', date: 12.days.from_now
+al.events.create name: 'Flash Event', date: 9.days.from_now
+al.events.create name: 'Flash Event', date: 6.days.ago
+al.events.create name: 'Flash Event', date: 6.days.from_now
+
+whizazaps.events.create name: 'Flash Event', date: 25.days.from_now
+whizazaps.events.create name: 'Flash Event', date: 10.days.from_now
+whizazaps.events.create name: 'Flash Event', date: 7.days.ago
+whizazaps.events.create name: 'Flash Event', date: 4.days.from_now

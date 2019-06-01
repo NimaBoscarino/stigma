@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :artists do
       resources :interactions
       resources :photos
+      resources :events
     end
   end
 end

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Card, Calendar} from 'antd';
+import { Card, Calendar, Badge} from 'antd';
 import moment from 'moment';
 
 const Photo = ({src}) => {
@@ -44,21 +44,51 @@ const PortfolioTab = ({ artist }) => {
 
 const CalendarTab = ({}) => {
   const [date, setDate] = useState(moment());
+  const events = [
+    {
+      id: 1,
+      date: moment(),
+      content: 'Flash Event',
+      type: 'success'
+    }
+  ]
 
   const onSelect = (value, mode) => {
     setDate(value);
   }
+
+  const eventsForDay = (value) => {
+    return events.filter(e => value.format('DD-MM-YYYY') === e.date.format('DD-MM-YYYY'));
+  }
+  
+  
+
+  const dateCellRender = (value) => {
+    const listData = eventsForDay(value);
+    return (
+      <div className="events">
+        {listData.map(item => (
+          <Badge key={item.id} status={item.type} text={item.content} />
+        ))}
+      </div>
+    );
+  }
+  
 
   return (
     <div style={{
       display: 'flex',
       flexDirection: 'row'
     }}>
-      <Calendar
-        style={{ width: '800px' }}
-        onSelect={onSelect}   
-        defaultValue={date}      
-      />    
+      <div style={{
+        width: '80%'
+      }}>
+        <Calendar
+          onSelect={onSelect}
+          defaultValue={date}
+          dateCellRender={dateCellRender}
+        />
+      </div>   
       <p>{date && `Events for: ${date.format('YYYY-MM-DD')}`}</p>
     </div>      
   )

@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import './components/ArtistCard'
 import ArtistCard from './components/ArtistCard';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const ArtistContainer = ({artists}) => {
   return (
@@ -17,6 +18,45 @@ const ArtistContainer = ({artists}) => {
       }
     </div>
   )
+}
+
+class ArtistPage extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      artist: null
+    }
+  }
+
+  componentDidMount() {
+    this.fetchData()
+  }
+
+  fetchData = () => {
+    console.log(this.props.match.params.id)
+    axios.get(`/api/artists/${this.props.match.params.id}`)
+    .then((response) => {
+      this.setState({
+        artist: response.data.artist
+      });
+    }) 
+  }
+
+  render() {
+    const {artist} = this.state
+
+    if (!artist) return 'Loading'
+
+    return (
+      <div style={{
+      }}>
+        <img alt={artist.name} src={artist.avatar} />
+        <h2>{artist.name}</h2>
+        <h3>{artist.username}</h3>
+      </div>
+    )
+  }
 }
 
 class App extends Component {
@@ -45,7 +85,12 @@ class App extends Component {
     const {artists} = this.state
     return (
       <div className="App">
-        <ArtistContainer artists={artists}/>  
+        <Router>
+          <Route exact path="/" render={() => {
+            return <ArtistContainer artists={artists}/>
+          }} />
+          <Route path="/artists/:id" component={ArtistPage} />
+        </Router>
       </div>
     );
   }

@@ -23,7 +23,7 @@ fearbear = Artist.create name: 'Olivia Harrison', username: 'fearbear', avatar: 
 
 nomi = Artist.create name: 'Nomi Chi', username: 'nomi_chi', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/9d6e02955a78315ab3f18e45ad3c7fb2/5D99ADFD/t51.2885-19/s150x150/23596480_1959154197667964_2542338945211957248_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net'
 
-zox = Artist.create name: 'Zox', username: 'fox.feet', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/8d18cfb2584396b1e54cba5e2454ce50/5D7F7FAD/t51.2885-19/s150x150/54247524_257999158485303_3604351084677562368_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net'
+zox = Artist.create name: 'Zox', username: 'foxfeet', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/8d18cfb2584396b1e54cba5e2454ce50/5D7F7FAD/t51.2885-19/s150x150/54247524_257999158485303_3604351084677562368_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net'
 
 al = Artist.create name: 'Alison Ann Woodward', username: 'alisonannwoodward', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/bce15d8c47b8cfab05b3f9c40d623cc2/5D9BE768/t51.2885-19/s150x150/54457919_575564232939739_23724999911145472_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net'
 

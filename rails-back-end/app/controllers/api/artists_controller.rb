@@ -8,10 +8,10 @@ class Api::ArtistsController < ApplicationController
   end
 
   def show
-    artists = Artist.find_by(username: params['id'])
+    artist = Artist.find_by(username: params['id'])
 
     render :json => {
-      artists: artists
+      artist: artist
     }
   end
 end

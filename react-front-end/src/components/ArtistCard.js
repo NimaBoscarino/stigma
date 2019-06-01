@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Link } from "react-router-dom";
 
 const styles = {
   card: {
@@ -24,7 +25,10 @@ function MediaCard(props) {
   console.log(props)
   return (
     <Card className={classes.card}>
-      <CardActionArea>
+      <CardActionArea
+        component={Link}
+        to={`/artists/${artist.username}`}
+      >
         <CardMedia
           className={classes.media}
           image={artist.avatar}

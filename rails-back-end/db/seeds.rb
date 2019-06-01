@@ -53,5 +53,36 @@ fearbear.photos.create url: 'https://static.wixstatic.com/media/1faa96_e272e7364
 
 fearbear.photos.create url: 'https://static.wixstatic.com/media/1faa96_711ca1c4d3824eb78e0ecd1895697a0d~mv2.jpg/v1/fill/w_686,h_686,al_c,q_90,usm_0.66_1.00_0.01/1faa96_711ca1c4d3824eb78e0ecd1895697a0d~mv2.webp'
 
+nomi.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/ef52a3561af922b4ac8631e67d76e170/5D96196A/t51.2885-15/e35/s1080x1080/59412975_2216882615095966_60554691593011496_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
 
+nomi.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/f316e293122276cf03136089a3ec8194/5D8C8ABB/t51.2885-15/e35/56781300_2471207309577641_3935813403125201195_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
 
+nomi.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/2946d7f1bfaecb9aa9f4d065c2b44f08/5D7F4458/t51.2885-15/e35/54446514_630541854054964_369762092245562327_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
+
+nomi.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/9b0bd2b8bae09769a5f22b321ef503cb/5D9D4415/t51.2885-15/e35/52666892_2285781938311639_135833581075356611_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
+
+nomi.photos.create url: 'https://static1.squarespace.com/static/595e98ce78d1711deda89b72/5a449cfac830257df7e247b6/5a449d150d9297c68881e9b2/1514446111078/Photo+2017-10-24%2C+5+46+44+PM.jpg?format=750w'
+
+zox.photos.create url: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/9d76d19938b133f8b00f23011a89a585/5D8F1EA1/t51.2885-15/e35/p1080x1080/60806171_615643558956067_4946591314269072035_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net'
+
+zox.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/2685577ef85507ce68ae30ad28131131/5D853FFA/t51.2885-15/e35/p1080x1080/62077895_2376999432362463_5924801470888432282_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
+
+zox.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/594ab0c157014b266770dee1a218a9c7/5D9DDE10/t51.2885-15/e35/s1080x1080/60292475_138546773885933_6221492889710480252_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
+
+zox.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/bee81ab0bd62d7c80838fdf517b25bb6/5D8D16D1/t51.2885-15/e35/s1080x1080/60496375_354077885507069_3187500444756994045_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
+
+al.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/92e321d1249c82e0b03426b450796c08/5D7CFE20/t51.2885-15/e35/s1080x1080/61720922_2303094613264129_6428110240326560469_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
+
+al.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/65c6d6f6fe0daeeb7abe2e7661b5e6e3/5D7CF2FC/t51.2885-15/e35/s1080x1080/61393547_461877027901840_273982057019839986_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
+
+al.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/441aa8eadecb684b6e7fc746d9ce0429/5D847D08/t51.2885-15/e35/s1080x1080/60731366_579235339252389_6955496234400582604_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
+
+al.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/bcd4516a5d400991a71fa1890abb41c2/5D897E33/t51.2885-15/e35/s1080x1080/59402490_302095690740353_823285659032242113_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
+
+whizazaps.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/ea8d1d4e17c1ba9a6c3261e699fe3af3/5D99634C/t51.2885-15/e35/61387051_2349314518691177_6831814663627539180_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
+
+whizazaps.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/85fff92eb80d654e4fe33a0c5777b2fa/5D7941BA/t51.2885-15/e35/60597516_365794027400721_2364107578729195164_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
+
+whizazaps.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/a8061b2d269718c8f02f9cc8f5b9a176/5D886B78/t51.2885-15/e35/61189892_1475081599299969_4869883458390896770_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
+
+whizazaps.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/f028abf8022e0dd74e223edaedaac93a/5D99C914/t51.2885-15/e35/61390923_138662523950333_7003645939359456046_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'

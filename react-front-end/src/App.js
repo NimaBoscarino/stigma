@@ -25,7 +25,8 @@ class ArtistPage extends Component {
     super(props)
 
     this.state = {
-      artist: null
+      artist: null,
+      photos: []
     }
   }
 
@@ -39,12 +40,20 @@ class ArtistPage extends Component {
     .then((response) => {
       this.setState({
         artist: response.data.artist
-      });
-    }) 
+      })
+    })
+
+    axios.get(`/api/artists/${this.props.match.params.id}/photos`)
+    .then((response) => {
+      this.setState({
+        photos: response.data.photos
+      })
+    })
+
   }
 
   render() {
-    const {artist} = this.state
+    const {artist, photos} = this.state
 
     if (!artist) return 'Loading'
 
@@ -54,6 +63,9 @@ class ArtistPage extends Component {
         <img alt={artist.name} src={artist.avatar} />
         <h2>{artist.name}</h2>
         <h3>{artist.username}</h3>
+        {
+          photos.map(p => <img alt={p.url} src={p.url} />)
+        }
       </div>
     )
   }

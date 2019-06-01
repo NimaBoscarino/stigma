@@ -19,6 +19,10 @@ Interaction.all.each do |a|
   a.destroy
 end
 
+Photo.all.each do |a|
+  a.destroy
+end
+
 fearbear = Artist.create name: 'Olivia Harrison', username: 'fearbear', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/297314c8f89bd600f3e1100445469b40/5D981F74/t51.2885-19/s150x150/40970299_402813163583917_4079292631308304384_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net'
 
 nomi = Artist.create name: 'Nomi Chi', username: 'nomi_chi', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/9d6e02955a78315ab3f18e45ad3c7fb2/5D99ADFD/t51.2885-19/s150x150/23596480_1959154197667964_2542338945211957248_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net'
@@ -36,4 +40,18 @@ dwight = Client.create name: 'Dwight Schrute'
 nima_fearbear = Interaction.create client: nima, artist: fearbear, text: 'Hey can I have tattoo'
 nima_nomi = Interaction.create client: nima, artist: nomi, text: 'Wow so cool tats pls'
 jim_nomi = Interaction.create client: jim, artist: nomi, text: 'I need tattoo of my wife'
+
+fearbear.photos.create url: 'https://static.wixstatic.com/media/1faa96_b40cb25c226c4cdc93a6b3c6595b836b~mv2.jpg/v1/fill/w_549,h_686,al_c,q_90,usm_0.66_1.00_0.01/1faa96_b40cb25c226c4cdc93a6b3c6595b836b~mv2.webp'
+
+fearbear.photos.create url: 'https://static.wixstatic.com/media/1faa96_22d0040c498a4e44ad5f73b2354a1963~mv2.jpg/v1/fill/w_686,h_686,al_c,q_90,usm_0.66_1.00_0.01/1faa96_22d0040c498a4e44ad5f73b2354a1963~mv2.webp'
+
+fearbear.photos.create url: 'https://static.wixstatic.com/media/1faa96_1c89befbaebd4503a027de8cce53c184~mv2.jpg/v1/fill/w_686,h_686,al_c,q_90,usm_0.66_1.00_0.01/1faa96_1c89befbaebd4503a027de8cce53c184~mv2.webp'
+
+fearbear.photos.create url: 'https://static.wixstatic.com/media/1faa96_676d200bf22c4a599b278d82b131fa1d~mv2.jpg/v1/fill/w_549,h_686,al_c,q_90,usm_0.66_1.00_0.01/1faa96_676d200bf22c4a599b278d82b131fa1d~mv2.webp'
+
+fearbear.photos.create url: 'https://static.wixstatic.com/media/1faa96_e272e7364c81453cb7093d261c3360fe~mv2.jpg/v1/fill/w_686,h_686,al_c,q_90,usm_0.66_1.00_0.01/1faa96_e272e7364c81453cb7093d261c3360fe~mv2.webp'
+
+fearbear.photos.create url: 'https://static.wixstatic.com/media/1faa96_711ca1c4d3824eb78e0ecd1895697a0d~mv2.jpg/v1/fill/w_686,h_686,al_c,q_90,usm_0.66_1.00_0.01/1faa96_711ca1c4d3824eb78e0ecd1895697a0d~mv2.webp'
+
+
 

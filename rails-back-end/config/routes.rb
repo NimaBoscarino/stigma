@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :artists do
       resources :interactions
+      resources :photos
     end
   end
 end

@@ -3,7 +3,8 @@ import axios from 'axios';
 import './App.css';
 import './components/ArtistCard'
 import ArtistCard from './components/ArtistCard';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import ArtistScreen from './screens/ArtistScreen'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const ArtistContainer = ({artists}) => {
   return (
@@ -18,57 +19,6 @@ const ArtistContainer = ({artists}) => {
       }
     </div>
   )
-}
-
-class ArtistPage extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      artist: null,
-      photos: []
-    }
-  }
-
-  componentDidMount() {
-    this.fetchData()
-  }
-
-  fetchData = () => {
-    console.log(this.props.match.params.id)
-    axios.get(`/api/artists/${this.props.match.params.id}`)
-    .then((response) => {
-      this.setState({
-        artist: response.data.artist
-      })
-    })
-
-    axios.get(`/api/artists/${this.props.match.params.id}/photos`)
-    .then((response) => {
-      this.setState({
-        photos: response.data.photos
-      })
-    })
-
-  }
-
-  render() {
-    const {artist, photos} = this.state
-
-    if (!artist) return 'Loading'
-
-    return (
-      <div style={{
-      }}>
-        <img alt={artist.name} src={artist.avatar} />
-        <h2>{artist.name}</h2>
-        <h3>{artist.username}</h3>
-        {
-          photos.map(p => <img alt={p.url} src={p.url} />)
-        }
-      </div>
-    )
-  }
 }
 
 class App extends Component {
@@ -98,10 +48,11 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
+          <Link to="/">Home</Link>
           <Route exact path="/" render={() => {
             return <ArtistContainer artists={artists}/>
           }} />
-          <Route path="/artists/:id" component={ArtistPage} />
+          <Route path="/artists/:id" component={ArtistScreen} />
         </Router>
       </div>
     );

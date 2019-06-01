@@ -64,7 +64,6 @@ export default class TabsCard extends React.Component {
   };
   
   onTabChange = (key, type) => {
-    console.log(key, type)
     this.setState({ [type]: key });
   };
 

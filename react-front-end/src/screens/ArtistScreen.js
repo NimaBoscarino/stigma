@@ -17,7 +17,6 @@ export default class ArtistScreen extends Component {
   }
 
   fetchData = () => {
-    console.log(this.props.match.params.id)
     axios.get(`/api/artists/${this.props.match.params.id}`)
     .then((response) => {
       this.setState({

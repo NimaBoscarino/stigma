@@ -12,7 +12,6 @@ const LinkToProfile = ({artist}) => (
 
 export default (props) => {
   const { artist } = props;
-  console.log(props)
   return (
     <Card
       hoverable

@@ -13,7 +13,7 @@ const ArtistContainer = ({artists}) => {
       flexWrap: 'wrap'
     }}>
       {
-        artists.map(a => <ArtistCard artist={a}/>)
+        artists.map(a => <ArtistCard key={a.id} artist={a}/>)
       }
     </div>
   )

@@ -35,7 +35,7 @@ function MediaCard(props) {
             {artist.name}
           </Typography>
           <Typography component="p">
-            Artist at Gastown Tattoo
+            {artist.username}
           </Typography>
         </CardContent>
       </CardActionArea>

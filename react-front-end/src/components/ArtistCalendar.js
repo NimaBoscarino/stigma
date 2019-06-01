@@ -38,6 +38,7 @@ export default ({ artist }) => {
     );
   }
   
+  const selectedDayEvents = date && eventsForDay(date)
 
   return (
     <div style={{
@@ -52,8 +53,17 @@ export default ({ artist }) => {
           defaultValue={date}
           dateCellRender={dateCellRender}
         />
-      </div>   
-      <p>{date && `Events for: ${date.format('YYYY-MM-DD')}`}</p>
+      </div>
+      <div>
+        <p>{date && `Events for: ${date.format('YYYY-MM-DD')}`}</p>
+        <ul>
+          {
+            selectedDayEvents.map(e => (
+              <li key={e.id}>{e.name}</li>
+            ))
+          }
+        </ul>
+      </div>
     </div>      
   )
 }

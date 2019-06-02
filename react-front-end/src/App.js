@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import './components/ArtistCard'
 import ArtistCard from './components/ArtistCard';
 import ArtistScreen from './screens/ArtistScreen'
 import LoginForm from './components/LoginForm'
-
+import createPersistedState from 'use-persisted-state';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+const useUserState = createPersistedState('user');
 
 const ArtistContainer = ({artists}) => {
   return (
@@ -23,54 +25,45 @@ const ArtistContainer = ({artists}) => {
   )
 }
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      message: 'Click the button to load data!',
-      artists: [],
-      user: null
-    }
-  }
+const App = (props) => {
+  
+  const [artists, setArtists] = useState([])
 
-  componentDidMount() {
-    this.fetchData()
-  }
+  const [user, setUser] = useUserState(null)
 
-  fetchData = () => {
-    axios.get('/api/artists')
-    .then((response) => {
-      this.setState({
-        artists: response.data.artists
-      });
-    }) 
-  }
-
-  onSignIn = async (values) => {
+  const onSignIn = async (values) => {
     const result = await axios.post(
-      `/api/auth/sign_in`,
-      { ...values }
+      `/api/auth/sign_in`, {
+        email: values.email + '@test.com',
+        password: values.password
+      }
     );
       
-    this.setState({ user: result.data.data });
+    setUser(result.data.data);
   }
-  
-  render() {
-    const {artists, user} = this.state
-    return (
-      <div className="App">
-        <Router>
-          <Link to="/">Home</Link>
-          <Route exact path="/" render={() => {
-            return <ArtistContainer artists={artists}/>
-          }} />
-          <Route path="/artists/:id" component={ArtistScreen} />
-        </Router>
-        <LoginForm onSignIn={this.onSignIn}/>
-        <h3>{user && user.email}</h3>
-      </div>
-    );
+
+  const fetchData = () => {
+    axios.get('/api/artists')
+    .then((response) => {
+      setArtists(response.data.artists)
+    })
   }
+
+  useEffect(fetchData, []);
+
+  return (
+    <div className="App">
+      <Router>
+        <Link to="/">Home</Link>
+        <Route exact path="/" render={() => {
+          return <ArtistContainer artists={artists}/>
+        }} />
+        <Route path="/artists/:id" component={ArtistScreen} />
+      </Router>
+      <LoginForm onSignIn={onSignIn}/>
+      <h3>{user && user.email}</h3>
+    </div>
+  );
 }
 
 export default App;

@@ -15,7 +15,7 @@ const PrivateRoute = ({ user, ...rest }) => (
   <Route {...rest} render={(props) => (
     // fakeAuth.isAuthenticated === true
       user
-      ? rest.render()
+      ? rest.render(props)
       : <Redirect to={{
           pathname: '/login',
           state: { from: props.location }
@@ -39,7 +39,7 @@ const LoginScreen = () => (
   <h1>You need to log in</h1>
 )
 
-const ArtistContainer = ({user}) => {
+const ArtistsContainer = ({user}) => {
 
   // the container is responsible for both fetching and displaying artists
   // should it be split into two? Maybe!
@@ -111,14 +111,17 @@ const App = (props) => {
         <Link to="/">Home</Link>
         
         <PrivateRoute exact path="/" user={user} render={() => (
-          <ArtistContainer user={user} />
+          <ArtistsContainer user={user} />
         )}/>
 
         <RedirectHomeRoute exact path="/login" user={user} render={() => (
           <LoginScreen />
         )}/>
 
-        <Route path="/artists/:id" component={ArtistScreen} />
+        <PrivateRoute exact path="/artists/:id" user={user} render={(props) => (
+          <ArtistScreen {...props} user={user}/>
+        )}/>
+
       </Router>
       <LoginForm onSignIn={onSignIn}/>
       <h3>{user && user.email}</h3>

@@ -8,7 +8,7 @@ export default class ArtistScreen extends Component {
 
     this.state = {
       artist: null,
-      photos: []
+      photos: [],
     }
   }
 
@@ -17,7 +17,13 @@ export default class ArtistScreen extends Component {
   }
 
   fetchData = () => {
-    axios.get(`/api/artists/${this.props.match.params.id}`)
+    axios.get(`/api/artists/${this.props.match.params.id}`, {
+      headers: {
+        client: this.props.user.client,
+        'access-token': this.props.user['access-token'],
+        uid: this.props.user.uid
+      }
+    })
     .then((response) => {
       this.setState({
         artist: response.data.artist

@@ -21,7 +21,7 @@ const FogContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  alint-items: center;
+  align-items: center;
 `
 
 const LogoText = styled.h1`

@@ -1,18 +1,26 @@
 import React from 'react'
-import { Form, Icon, Input, Button } from 'antd';
 import axios from 'axios'
+import { Form, Icon, Input, Button } from 'antd';
+import styled from 'styled-components'
+const FormItem = Form.Item;
 
-function hasErrors(fieldsError) {
-  return Object.keys(fieldsError).some(field => fieldsError[field]);
-}
+const StyledForm = styled(Form)`
+  background-color: white;
+  padding-top: 25px;
+  width: 350px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+`
 
-class HorizontalLoginForm extends React.Component {
+const FullWidthButton = styled(Button)`
+width: 100%;
+`
 
-  componentDidMount() {
-    // To disabled submit button at the beginning.
-    this.props.form.validateFields();
-  }
-
+class NormalLoginForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields(async (err, values) => {
@@ -24,43 +32,53 @@ class HorizontalLoginForm extends React.Component {
     });
   };
 
+  hasErrors(fieldsError) {
+    return Object.keys(fieldsError).some(field => fieldsError[field]);
+  }  
+
   render() {
     const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
-
     // Only show error after a field is touched.
-    const usernameError = isFieldTouched('username') && getFieldError('username');
+    const emailError = isFieldTouched('email') && getFieldError('email');
     const passwordError = isFieldTouched('password') && getFieldError('password');
+
     return (
-      <Form layout="inline" onSubmit={this.handleSubmit}>
-        <Form.Item validateStatus={usernameError ? 'error' : ''} help={usernameError || ''}>
+      <StyledForm onSubmit={this.handleSubmit} className="login-form">
+        <FormItem
+          validateStatus={emailError ? 'error' : ''}
+          help={emailError || ''}
+        >
           {getFieldDecorator('email', {
             rules: [{ required: true, message: 'Please input your email!' }],
           })(
-            <Input
-              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="Username"
-            />,
+            <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Email" />
           )}
-        </Form.Item>
-        <Form.Item validateStatus={passwordError ? 'error' : ''} help={passwordError || ''}>
+        </FormItem>
+        <FormItem
+          validateStatus={passwordError ? 'error' : ''}
+          help={passwordError || ''}
+        >  
           {getFieldDecorator('password', {
             rules: [{ required: true, message: 'Please input your Password!' }],
           })(
-            <Input
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              type="password"
-              placeholder="Password"
-            />,
+            <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="Password" />
           )}
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit" disabled={hasErrors(getFieldsError())}>
-            Log in
-          </Button>
-        </Form.Item>
-      </Form>
+        </FormItem>
+        <FormItem style={{textAlign: 'center', marginBottom: 0}}>
+          <FullWidthButton 
+            type="primary"
+            htmlType="submit"
+            className="login-form-button"
+            loading={this.props.logging_in}
+            disabled={this.hasErrors(getFieldsError())}            
+          >
+          { !this.props.logging_in ? <Icon type="smile" /> : null }Log In
+          </FullWidthButton>
+          Don't have an account? <span style={{color: 'blue', cursor: 'pointer'}}>Register here!</span>
+        </FormItem>
+      </StyledForm>
     );
   }
 }
 
-export default Form.create({ name: 'horizontal_login' })(HorizontalLoginForm);
+export default Form.create({ name: 'normal_login' })(NormalLoginForm);

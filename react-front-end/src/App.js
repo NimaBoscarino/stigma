@@ -39,7 +39,32 @@ const LoginScreen = () => (
   <h1>You need to log in</h1>
 )
 
-const ArtistContainer = ({artists}) => {
+const ArtistContainer = ({user}) => {
+
+  // the container is responsible for both fetching and displaying artists
+  // should it be split into two? Maybe!
+
+  const [artists, setArtists] = useState([])
+
+  const fetchData = () => {
+    const fetchDataAsync = async () => {
+      const result = await axios.get('/api/artists', {
+        headers: {
+          client: user.client,
+          'access-token': user['access-token'],
+          uid: user.uid
+        }
+      })
+      setArtists(result.data.artists)
+      return 
+    }
+
+    fetchDataAsync()
+  }
+
+  useEffect(fetchData, []);
+
+
   return (
     <div style={{
       padding: '25px',
@@ -56,8 +81,6 @@ const ArtistContainer = ({artists}) => {
 
 const App = (props) => {
   
-  const [artists, setArtists] = useState([])
-
   const [user, setUser] = useUserState(null)
 
   const onSignIn = async (values) => {
@@ -67,18 +90,13 @@ const App = (props) => {
         password: values.password
       }
     );
-    
-    setUser(result.data.data);
-  }
 
-  const fetchData = () => {
-    const fetchDataAsync = async () => {
-      const result = await axios.get('/api/artists')
-      setArtists(result.data.artists)
-      return 
-    }
-
-    fetchDataAsync()
+    setUser({
+      ...result.data.data,
+      client: result.headers.client,
+      'access-token': result.headers['access-token'],
+      uid: result.headers.uid
+    });
   }
 
   const logout = () => {
@@ -87,15 +105,13 @@ const App = (props) => {
     setUser(null)
   }
 
-  useEffect(fetchData, []);
-
   return (
     <div className="App">
       <Router>
         <Link to="/">Home</Link>
         
         <PrivateRoute exact path="/" user={user} render={() => (
-          <ArtistContainer artists={artists}/>
+          <ArtistContainer user={user} />
         )}/>
 
         <RedirectHomeRoute exact path="/login" user={user} render={() => (

@@ -6,9 +6,38 @@ import ArtistCard from './components/ArtistCard';
 import ArtistScreen from './screens/ArtistScreen'
 import LoginForm from './components/LoginForm'
 import createPersistedState from 'use-persisted-state';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+import { Button } from 'antd'
 
 const useUserState = createPersistedState('user');
+
+const PrivateRoute = ({ user, ...rest }) => (
+  <Route {...rest} render={(props) => (
+    // fakeAuth.isAuthenticated === true
+      user
+      ? rest.render()
+      : <Redirect to={{
+          pathname: '/login',
+          state: { from: props.location }
+        }} />
+  )} />
+)
+
+const RedirectHomeRoute = ({ user, ...rest }) => (
+  <Route {...rest} render={(props) => (
+    // fakeAuth.isAuthenticated === true
+      user
+      ? <Redirect to={{
+          pathname: '/',
+          state: { from: props.location }
+        }} />
+      : rest.render()
+  )} />
+)
+
+const LoginScreen = () => (
+  <h1>You need to log in</h1>
+)
 
 const ArtistContainer = ({artists}) => {
   return (
@@ -42,11 +71,15 @@ const App = (props) => {
     setUser(result.data.data);
   }
 
-  const fetchData = () => {
-    axios.get('/api/artists')
-    .then((response) => {
-      setArtists(response.data.artists)
-    })
+  const fetchData = async () => {
+    const result = await axios.get('/api/artists')
+    setArtists(result.data.artists)
+  }
+
+  const logout = () => {
+    // TODO: call sign_out endpoint
+
+    setUser(null)
   }
 
   useEffect(fetchData, []);
@@ -55,13 +88,20 @@ const App = (props) => {
     <div className="App">
       <Router>
         <Link to="/">Home</Link>
-        <Route exact path="/" render={() => {
-          return <ArtistContainer artists={artists}/>
-        }} />
+        
+        <PrivateRoute exact path="/" user={user} render={() => (
+          <ArtistContainer artists={artists}/>
+        )}/>
+
+        <RedirectHomeRoute exact path="/login" user={user} render={() => (
+          <LoginScreen />
+        )}/>
+
         <Route path="/artists/:id" component={ArtistScreen} />
       </Router>
       <LoginForm onSignIn={onSignIn}/>
       <h3>{user && user.email}</h3>
+      <h3>{user && <Button onClick={logout}>Log out</Button>}</h3>
     </div>
   );
 }

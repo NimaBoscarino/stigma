@@ -41,6 +41,18 @@ nima = Client.create name: 'Nima Boscarino', email: 'nima@test.com', password: '
 jim = Client.create name: 'Jim Halpert', email: 'jim@test.com', password: 'client'
 dwight = Client.create name: 'Dwight Schrute', email: 'dwight@test.com', password: 'client'
 
+nima.followings.create artist: fearbear
+nima.followings.create artist: nomi
+nima.followings.create artist: al
+
+jim.followings.create artist: zox
+jim.followings.create artist: nomi
+jim.followings.create artist: whizazaps
+
+dwight.followings.create artist: fearbear
+dwight.followings.create artist: al
+dwight.followings.create artist: zox
+
 nima_fearbear = Interaction.create client: nima, artist: fearbear, text: 'Hey can I have tattoo'
 nima_nomi = Interaction.create client: nima, artist: nomi, text: 'Wow so cool tats pls'
 jim_nomi = Interaction.create client: jim, artist: nomi, text: 'I need tattoo of my wife'

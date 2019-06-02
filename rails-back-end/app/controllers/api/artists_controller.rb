@@ -3,18 +3,30 @@ class Api::ArtistsController < ApplicationController
 
   def index
     artists = Artist.all
-    followed = current_user.followed_artists
 
-    artists = artists.map do |a|
-      artist = {
-        details: a,
-        followed: followed.include?(a)
-      }
+    if current_user.type === 'Artist'
+      # artists cannot follow other artists... yet!
+      artists = artists.map do |a|
+        artist = {
+          details: a,
+          followed: false
+        }
+      end
+    else
+      followed = current_user.followed_artists
+      artists = artists.map do |a|
+        artist = {
+          details: a,
+          followed: followed.include?(a)
+        }
+      end
+      
     end
-
+  
     render :json => {
       artists: artists
     }
+  
   end
 
   def show

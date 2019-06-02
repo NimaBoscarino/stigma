@@ -28,7 +28,7 @@ const FollowingList = ({ user }) => {
     <div>
       <h2>Artists you are following:</h2>
       {
-        followingArtists.map(i => <p>{i.name}</p>)
+        followingArtists.map(i => <p key={i.id}>{i.name}</p>)
       }
     </div>
   )

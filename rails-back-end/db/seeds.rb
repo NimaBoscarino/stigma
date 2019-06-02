@@ -122,4 +122,5 @@ whizazaps.events.create name: 'Flash Event', date: 10.days.from_now
 whizazaps.events.create name: 'Flash Event', date: 7.days.ago
 whizazaps.events.create name: 'Flash Event', date: 4.days.from_now
 
-User.create email: 'test@test.com', password: '123456'
+User.create email: 'artist@test.com', password: 'artist'
+User.create email: 'client@test.com', password: 'client'

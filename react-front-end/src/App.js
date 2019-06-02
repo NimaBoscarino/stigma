@@ -4,6 +4,8 @@ import './App.css';
 import './components/ArtistCard'
 import ArtistCard from './components/ArtistCard';
 import ArtistScreen from './screens/ArtistScreen'
+import LoginForm from './components/LoginForm'
+
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const ArtistContainer = ({artists}) => {
@@ -26,7 +28,8 @@ class App extends Component {
     super(props)
     this.state = {
       message: 'Click the button to load data!',
-      artists: []
+      artists: [],
+      user: null
     }
   }
 
@@ -43,8 +46,17 @@ class App extends Component {
     }) 
   }
 
+  onSignIn = async (values) => {
+    const result = await axios.post(
+      `/api/auth/sign_in`,
+      { ...values }
+    );
+      
+    this.setState({ user: result.data.data });
+  }
+  
   render() {
-    const {artists} = this.state
+    const {artists, user} = this.state
     return (
       <div className="App">
         <Router>
@@ -54,6 +66,8 @@ class App extends Component {
           }} />
           <Route path="/artists/:id" component={ArtistScreen} />
         </Router>
+        <LoginForm onSignIn={this.onSignIn}/>
+        <h3>{user && user.email}</h3>
       </div>
     );
   }

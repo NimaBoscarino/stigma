@@ -2,6 +2,12 @@ import React from 'react'
 import LoginForm from './components/LoginForm'
 import axios from 'axios'
 import styled from 'styled-components'
+import { Layout, Icon } from 'antd'
+const { Footer } = Layout;
+
+const StyledFooter = styled(Footer)`
+  background: transparent;
+`
 
 const ScreenContainer = styled.div`
   background: green;
@@ -67,6 +73,7 @@ const LoginScreen = ({ user, setUser }) => {
           </LogoText>
         </div>
         <LoginForm onSignIn={onSignIn}/>
+        <StyledFooter style={{color: 'white'}}>Made with <Icon type="heart" theme="filled"/> in Vancouver</StyledFooter>
       </FogContainer>
     </ScreenContainer>
   )

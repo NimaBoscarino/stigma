@@ -7,6 +7,7 @@ import ArtistScreen from './screens/ArtistScreen'
 import LoginForm from './components/LoginForm'
 import createPersistedState from 'use-persisted-state';
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+import FollowedArtistsList from './components/FollowedArtistsList'
 import { Button } from 'antd'
 
 const useUserState = createPersistedState('user');
@@ -56,7 +57,6 @@ const ArtistsContainer = ({user}) => {
         }
       })
       setArtists(result.data.artists)
-      return 
     }
 
     fetchDataAsync()
@@ -126,6 +126,9 @@ const App = (props) => {
       <LoginForm onSignIn={onSignIn}/>
       <h3>{user && user.email}</h3>
       <h3>{user && <Button onClick={logout}>Log out</Button>}</h3>
+      {
+        user && user.type === 'Client' && <FollowedArtistsList user={user} />
+      }
     </div>
   );
 }

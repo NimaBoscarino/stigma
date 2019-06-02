@@ -6,4 +6,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
+
+  def as_json(options={})
+    puts type
+    super(options).merge({type: type})
+  end
+
 end

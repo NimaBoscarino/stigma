@@ -8,5 +8,7 @@ Rails.application.routes.draw do
       resources :photos
       resources :events
     end
+
+    resources :followings
   end
 end

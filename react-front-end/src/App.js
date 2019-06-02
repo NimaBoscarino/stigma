@@ -4,7 +4,7 @@ import './App.css';
 import './components/ArtistCard'
 import ArtistCard from './components/ArtistCard';
 import ArtistScreen from './screens/ArtistScreen'
-import LoginForm from './components/LoginForm'
+import LoginScreen from './screens/LoginScreen/index'
 import createPersistedState from 'use-persisted-state';
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import FollowedArtistsList from './components/FollowedArtistsList'
@@ -34,10 +34,6 @@ const RedirectHomeRoute = ({ user, ...rest }) => (
         }} />
       : rest.render()
   )} />
-)
-
-const LoginScreen = () => (
-  <h1>You need to log in</h1>
 )
 
 const ArtistsContainer = ({user}) => {
@@ -83,22 +79,6 @@ const App = (props) => {
   
   const [user, setUser] = useUserState(null)
 
-  const onSignIn = async (values) => {
-    const result = await axios.post(
-      `/api/auth/sign_in`, {
-        email: values.email + '@test.com',
-        password: values.password
-      }
-    );
-
-    setUser({
-      ...result.data.data,
-      client: result.headers.client,
-      'access-token': result.headers['access-token'],
-      uid: result.headers.uid
-    });
-  }
-
   const logout = () => {
     // TODO: call sign_out endpoint
 
@@ -115,7 +95,7 @@ const App = (props) => {
         )}/>
 
         <RedirectHomeRoute exact path="/login" user={user} render={() => (
-          <LoginScreen />
+          <LoginScreen user={user} setUser={setUser} />
         )}/>
 
         <PrivateRoute exact path="/artists/:id" user={user} render={(props) => (
@@ -123,7 +103,6 @@ const App = (props) => {
         )}/>
 
       </Router>
-      <LoginForm onSignIn={onSignIn}/>
       <h3>{user && user.email}</h3>
       <h3>{user && <Button onClick={logout}>Log out</Button>}</h3>
       {

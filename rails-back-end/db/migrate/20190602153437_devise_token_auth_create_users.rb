@@ -45,6 +45,11 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[5.2]
       t.json :tokens
 
       t.timestamps
+
+      t.string :avatar
+      t.string :username # instagram, for artists
+
+      t.string :type, null: false
     end
 
     add_index :users, :email,                unique: true

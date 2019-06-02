@@ -27,23 +27,19 @@ Event.all.each do |a|
   a.destroy
 end
 
-User.all.each do |a|
-  a.destroy
-end
+fearbear = Artist.create name: 'Olivia Harrison', username: 'fearbear', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/297314c8f89bd600f3e1100445469b40/5D981F74/t51.2885-19/s150x150/40970299_402813163583917_4079292631308304384_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net', email: 'fearbear@test.com', password: 'artist'
 
-fearbear = Artist.create name: 'Olivia Harrison', username: 'fearbear', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/297314c8f89bd600f3e1100445469b40/5D981F74/t51.2885-19/s150x150/40970299_402813163583917_4079292631308304384_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net'
+nomi = Artist.create name: 'Nomi Chi', username: 'nomi_chi', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/9d6e02955a78315ab3f18e45ad3c7fb2/5D99ADFD/t51.2885-19/s150x150/23596480_1959154197667964_2542338945211957248_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net', email: 'nomi@test.com', password: 'artist'
 
-nomi = Artist.create name: 'Nomi Chi', username: 'nomi_chi', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/9d6e02955a78315ab3f18e45ad3c7fb2/5D99ADFD/t51.2885-19/s150x150/23596480_1959154197667964_2542338945211957248_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net'
+zox = Artist.create name: 'Zox', username: 'foxfeet', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/8d18cfb2584396b1e54cba5e2454ce50/5D7F7FAD/t51.2885-19/s150x150/54247524_257999158485303_3604351084677562368_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net', email: 'zox@test.com', password: 'artist'
 
-zox = Artist.create name: 'Zox', username: 'foxfeet', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/8d18cfb2584396b1e54cba5e2454ce50/5D7F7FAD/t51.2885-19/s150x150/54247524_257999158485303_3604351084677562368_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net'
+al = Artist.create name: 'Alison Ann Woodward', username: 'alisonannwoodward', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/bce15d8c47b8cfab05b3f9c40d623cc2/5D9BE768/t51.2885-19/s150x150/54457919_575564232939739_23724999911145472_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net', email: 'al@test.com', password: 'artist'
 
-al = Artist.create name: 'Alison Ann Woodward', username: 'alisonannwoodward', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/bce15d8c47b8cfab05b3f9c40d623cc2/5D9BE768/t51.2885-19/s150x150/54457919_575564232939739_23724999911145472_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net'
+whizazaps = Artist.create name: 'Cole Bazin', username: 'whizazaps', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/e9541762b4776ca5e9b3e4f3b1e2b357/5D7B4196/t51.2885-19/s150x150/40981021_457038124817065_6744906419339788288_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net', email: 'whizazaps@test.com', password: 'artist'
 
-whizazaps = Artist.create name: 'Cole Bazin', username: 'whizazaps', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/e9541762b4776ca5e9b3e4f3b1e2b357/5D7B4196/t51.2885-19/s150x150/40981021_457038124817065_6744906419339788288_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net'
-
-nima = Client.create name: 'Nima Boscarino'
-jim = Client.create name: 'Jim Halpert'
-dwight = Client.create name: 'Dwight Schrute'
+nima = Client.create name: 'Nima Boscarino', email: 'nima@test.com', password: 'client'
+jim = Client.create name: 'Jim Halpert', email: 'jim@test.com', password: 'client'
+dwight = Client.create name: 'Dwight Schrute', email: 'dwight@test.com', password: 'client'
 
 nima_fearbear = Interaction.create client: nima, artist: fearbear, text: 'Hey can I have tattoo'
 nima_nomi = Interaction.create client: nima, artist: nomi, text: 'Wow so cool tats pls'
@@ -121,6 +117,3 @@ whizazaps.events.create name: 'Flash Event', date: 25.days.from_now
 whizazaps.events.create name: 'Flash Event', date: 10.days.from_now
 whizazaps.events.create name: 'Flash Event', date: 7.days.ago
 whizazaps.events.create name: 'Flash Event', date: 4.days.from_now
-
-User.create email: 'artist@test.com', password: 'artist'
-User.create email: 'client@test.com', password: 'client'

@@ -86,9 +86,9 @@ const App = (props) => {
   }
 
   return (
-    <div className="App">
+    <div className="App" style={{ height: '100%' }}>
       <Router>
-        <Link to="/">Home</Link>
+        {/* <Link to="/">Home</Link> */}
         
         <PrivateRoute exact path="/" user={user} render={() => (
           <ArtistsContainer user={user} />

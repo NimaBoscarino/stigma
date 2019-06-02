@@ -67,13 +67,18 @@ const App = (props) => {
         password: values.password
       }
     );
-      
+    
     setUser(result.data.data);
   }
 
-  const fetchData = async () => {
-    const result = await axios.get('/api/artists')
-    setArtists(result.data.artists)
+  const fetchData = () => {
+    const fetchDataAsync = async () => {
+      const result = await axios.get('/api/artists')
+      setArtists(result.data.artists)
+      return 
+    }
+
+    fetchDataAsync()
   }
 
   const logout = () => {

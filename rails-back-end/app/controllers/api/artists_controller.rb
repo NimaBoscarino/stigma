@@ -3,6 +3,14 @@ class Api::ArtistsController < ApplicationController
 
   def index
     artists = Artist.all
+    followed = current_user.followed_artists
+
+    artists = artists.map do |a|
+      artist = {
+        details: a,
+        followed: followed.include?(a)
+      }
+    end
 
     render :json => {
       artists: artists

@@ -12,19 +12,20 @@ const LinkToProfile = ({artist}) => (
 
 export default (props) => {
   const { artist } = props;
+  const { details, followed } = artist
   return (
     <Card
       hoverable
       style={{ width: 240 }}
       cover={
-        <img alt="example" src={artist.avatar} />
+        <img alt="example" src={details.avatar} />
       }
       actions={[
-        <LinkToProfile artist={artist} />,
-        <Icon type="heart" />
+        <LinkToProfile artist={details} />,
+        <Icon type="heart" theme={followed ? 'filled' : null}/>
       ]}
     >
-      <Meta title={artist.name} description={artist.username} />
+      <Meta title={details.name} description={details.username} />
     </Card>
   );
 }

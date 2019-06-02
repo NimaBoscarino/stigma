@@ -62,7 +62,7 @@ const ArtistsContainer = ({user}) => {
     fetchDataAsync()
   }
 
-  useEffect(fetchData, []);
+  useEffect(fetchData, [user]);
 
 
   return (

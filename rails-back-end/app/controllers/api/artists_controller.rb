@@ -1,4 +1,6 @@
 class Api::ArtistsController < ApplicationController
+  # before_action :authenticate_user!
+
   def index
     artists = Artist.all
 

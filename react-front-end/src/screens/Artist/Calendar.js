@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Calendar, Badge} from 'antd';
+import { Calendar, Badge, Card } from 'antd';
 import moment from 'moment';
+
+const EventCard = ({event}) => {
+
+  return (
+    <Card size="small" title={event.name} style={{
+      width: '100%',
+      marginBottom: '5px'
+    }}>
+      <p>{moment(event.date).format('DD-MM-YYYY')}</p>
+    </Card>
+  )
+}
 
 const CalendarScreen = ({ user }) => {
   const [date, setDate] = useState(moment());
@@ -55,14 +67,12 @@ const CalendarScreen = ({ user }) => {
         />
       </div>
       <div>
-        <p>{date && `Events for: ${date.format('YYYY-MM-DD')}`}</p>
-        <ul>
-          {
-            selectedDayEvents.map(e => (
-              <li key={e.id}>{e.name}</li>
-            ))
-          }
-        </ul>
+        <h2>{date && `Events for: ${date.format('YYYY-MM-DD')}`}</h2>
+        {
+          selectedDayEvents.map(e => (
+            <EventCard key={e.id} event={e} />
+          ))
+        }
       </div>
     </div>      
   )

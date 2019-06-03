@@ -2,16 +2,11 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Navbar from '../../components/Navbar'
 import { Route } from 'react-router-dom'
+import ClientsScreen from './Clients'
 
 const HomeScreen = () => {
   return (
     <h1>Home</h1>
-  )
-}
-
-const ClientsScreen = () => {
-  return (
-    <h1>Clients</h1>
   )
 }
 
@@ -32,7 +27,7 @@ const ArtistIndex = ({ user, logout, match }) => {
     <div>
       <Navbar user={user} logout={logout} />      
       <Route exact path={`/`} component={HomeScreen} />
-      <Route exact path={`/clients`} component={ClientsScreen} />
+      <Route exact path={`/clients`} component={(props) => <ClientsScreen user={user}/>} />
       <Route exact path={`/questions`} component={QuestionsScreen} />
       <Route exact path={`/calendar`} component={CalendarScreen} />
     </div>

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       resources :interactions
       resources :photos
       resources :events
+
+      resources :clients
     end
 
     resources :followings

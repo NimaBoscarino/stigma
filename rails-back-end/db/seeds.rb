@@ -73,6 +73,10 @@ fearbear.photos.create url: 'https://static.wixstatic.com/media/1faa96_e272e7364
 
 fearbear.photos.create url: 'https://static.wixstatic.com/media/1faa96_711ca1c4d3824eb78e0ecd1895697a0d~mv2.jpg/v1/fill/w_686,h_686,al_c,q_90,usm_0.66_1.00_0.01/1faa96_711ca1c4d3824eb78e0ecd1895697a0d~mv2.webp'
 
+fearbear.photos.create url: 'https://instagram.fyvr2-1.fna.fbcdn.net/vp/0211cd1271eac488cc7069c8c8c69eee/5D91ACDC/t51.2885-15/e35/p1080x1080/58468319_445592076234879_2916524627390798880_n.jpg?_nc_ht=instagram.fyvr2-1.fna.fbcdn.net'
+
+fearbear.photos.create url: 'https://instagram.fyvr2-1.fna.fbcdn.net/vp/87f7f213c2c0ca8d0fb6be1be0e408c0/5D99C19A/t51.2885-15/e35/s1080x1080/59183216_625039924667192_202839854506429916_n.jpg?_nc_ht=instagram.fyvr2-1.fna.fbcdn.net'
+
 nomi.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/ef52a3561af922b4ac8631e67d76e170/5D96196A/t51.2885-15/e35/s1080x1080/59412975_2216882615095966_60554691593011496_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
 
 nomi.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/f316e293122276cf03136089a3ec8194/5D8C8ABB/t51.2885-15/e35/56781300_2471207309577641_3935813403125201195_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
@@ -82,6 +86,12 @@ nomi.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/2946d7f1bfae
 nomi.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/9b0bd2b8bae09769a5f22b321ef503cb/5D9D4415/t51.2885-15/e35/52666892_2285781938311639_135833581075356611_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
 
 nomi.photos.create url: 'https://static1.squarespace.com/static/595e98ce78d1711deda89b72/5a449cfac830257df7e247b6/5a449d150d9297c68881e9b2/1514446111078/Photo+2017-10-24%2C+5+46+44+PM.jpg?format=750w'
+
+nomi.photos.create url: 'https://instagram.fyvr2-1.fna.fbcdn.net/vp/000585d0b7ac8f8f7f48064669882d90/5D87AB51/t51.2885-15/e35/47586329_755401641499860_7363030860659933289_n.jpg?_nc_ht=instagram.fyvr2-1.fna.fbcdn.net'
+
+nomi.photos.create url: 'https://instagram.fyvr2-1.fna.fbcdn.net/vp/b97ce8ec481164b2303a7c636970d7b6/5D9AD140/t51.2885-15/e35/54277615_308869173144109_1047759998652345926_n.jpg?_nc_ht=instagram.fyvr2-1.fna.fbcdn.net'
+
+nomi.photos.create url: 'https://instagram.fyvr2-1.fna.fbcdn.net/vp/5fe1d380c8ceda9ff49658eca277c9bd/5D9A1F91/t51.2885-15/e35/25013788_158502254769187_1902708101681774592_n.jpg?_nc_ht=instagram.fyvr2-1.fna.fbcdn.net'
 
 zox.photos.create url: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/9d76d19938b133f8b00f23011a89a585/5D8F1EA1/t51.2885-15/e35/p1080x1080/60806171_615643558956067_4946591314269072035_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net'
 

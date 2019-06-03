@@ -37,4 +37,45 @@ class Api::ArtistsController < ApplicationController
       artist: artist
     }
   end
+
+  def openBooks
+    artist = Artist.find(params['artist_id'])
+
+    if current_user.id == artist.id
+      artist.open_books
+
+      render :json => {
+        message: 'Success'
+      }
+    else
+      render :json => {
+        message: 'Failure. You cannot open someone else\'s books.'
+      }
+    end
+  end
+
+  def closeBooks
+    artist = Artist.find(params['artist_id'])
+
+    if current_user.id == artist.id
+      artist.close_books
+
+      render :json => {
+        message: 'Success'
+      }
+    else
+      render :json => {
+        message: 'Failure. You cannot open someone else\'s books.'
+      }
+    end
+  end
+
+  def booksStatus
+    artist = Artist.find(params['artist_id'])
+    books_open = artist.books_open?
+    render :json => {
+      booksStatus: books_open
+    }
+  end
+
 end

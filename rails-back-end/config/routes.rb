@@ -9,6 +9,9 @@ Rails.application.routes.draw do
       resources :events
 
       resources :clients
+      post '/openBooks', to: 'artists#openBooks'
+      post '/closeBooks', to: 'artists#closeBooks'
+      get '/booksStatus', to: 'artists#booksStatus'
     end
 
     resources :followings

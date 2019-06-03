@@ -8,8 +8,10 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   def as_json(options={})
-    puts type
-    super(options).merge({type: type})
+    super(options).merge({
+      type: type,
+      books_open: type === 'Artist' ? books_open? : false
+    })
   end
 
 end

@@ -17,7 +17,8 @@ class Api::ArtistsController < ApplicationController
       artists = artists.map do |a|
         artist = {
           details: a,
-          followed: followed.include?(a)
+          followed: followed.include?(a),
+          books_open: a.books_open?
         }
       end
       

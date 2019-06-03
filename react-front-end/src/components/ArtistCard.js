@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
-import { Card, Icon } from 'antd';
+import { Card, Icon, Tag } from 'antd';
 import axios from 'axios'
 const { Meta } = Card;
 
@@ -13,7 +13,7 @@ const LinkToProfile = ({artist}) => (
 
 export default (props) => {
   const { artist, user} = props;
-  const { details, followed } = artist
+  const { details, followed, books_open } = artist
 
   const [heart, setHeart] = useState(followed)
 
@@ -59,7 +59,17 @@ export default (props) => {
       hoverable
       style={{ width: 240 }}
       cover={
-        <img alt="example" src={details.avatar} />
+        <div>
+          {
+            books_open && (<Tag style={{
+              position: 'absolute',
+              top: 5,
+              right: 0
+            }}
+            color="green">Books open!</Tag>)
+          }          
+          <img style={{width: '100%'}} alt="example" src={details.avatar} />
+        </div>
       }
       actions={[
         <LinkToProfile artist={details} />,

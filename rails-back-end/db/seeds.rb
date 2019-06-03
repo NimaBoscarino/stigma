@@ -31,6 +31,10 @@ Following.all.each do |a|
   a.destroy
 end
 
+ArtistInformation.all.each do |a|
+  a.destroy
+end
+
 fearbear = Artist.create name: 'Olivia Harrison', username: 'fearbear', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/297314c8f89bd600f3e1100445469b40/5D981F74/t51.2885-19/s150x150/40970299_402813163583917_4079292631308304384_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net', email: 'fearbear@test.com', password: 'artist'
 
 nomi = Artist.create name: 'Nomi Chi', username: 'nomi_chi', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/9d6e02955a78315ab3f18e45ad3c7fb2/5D99ADFD/t51.2885-19/s150x150/23596480_1959154197667964_2542338945211957248_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net', email: 'nomi@test.com', password: 'artist'
@@ -143,3 +147,9 @@ whizazaps.events.create name: 'Flash Event', date: 25.days.from_now
 whizazaps.events.create name: 'Flash Event', date: 10.days.from_now
 whizazaps.events.create name: 'Flash Event', date: 7.days.ago
 whizazaps.events.create name: 'Flash Event', date: 4.days.from_now
+
+ArtistInformation.create artist: fearbear, books_open: true
+ArtistInformation.create artist: nomi, books_open: false
+ArtistInformation.create artist: zox, books_open: false
+ArtistInformation.create artist: al, books_open: true
+ArtistInformation.create artist: whizazaps, books_open: true

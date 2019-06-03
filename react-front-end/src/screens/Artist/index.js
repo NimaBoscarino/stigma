@@ -3,22 +3,12 @@ import axios from 'axios'
 import Navbar from '../../components/Navbar'
 import { Route } from 'react-router-dom'
 import ClientsScreen from './Clients'
+import QuestionsScreen from './Questions'
+import CalendarScreen from './Calendar'
 
 const HomeScreen = () => {
   return (
     <h1>Home</h1>
-  )
-}
-
-const QuestionsScreen = () => {
-  return (
-    <h1>Questions</h1>
-  )
-}
-
-const CalendarScreen = () => {
-  return (
-    <h1>Calendar</h1>
   )
 }
 
@@ -28,8 +18,8 @@ const ArtistIndex = ({ user, logout, match }) => {
       <Navbar user={user} logout={logout} />      
       <Route exact path={`/`} component={HomeScreen} />
       <Route exact path={`/clients`} component={(props) => <ClientsScreen user={user}/>} />
-      <Route exact path={`/questions`} component={QuestionsScreen} />
-      <Route exact path={`/calendar`} component={CalendarScreen} />
+      <Route exact path={`/questions`} component={(props) => <QuestionsScreen user={user}/>} />
+      <Route exact path={`/calendar`} component={(props) => <CalendarScreen user={user}/>} />
     </div>
   )
 }

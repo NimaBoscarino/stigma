@@ -53,10 +53,10 @@ const App = (props) => {
           }}/>
 
         </Switch>
-        <h3>{user && user.email}</h3>
+        {/* <h3>{user && user.email}</h3>
         {
           user && user.type === 'Client' && <FollowedArtistsList user={user} />
-        }
+        } */}
       </Router>
     </div>
   );

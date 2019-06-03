@@ -5,7 +5,7 @@ import Navbar from '../../components/Navbar'
 const ArtistHomeScreen = ({ user, logout }) => {
   return (
     <div>
-      <Navbar logout={logout} />      
+      <Navbar user={user} logout={logout} />      
       <h2>ARTIST HOME</h2>
       <p>
         Dashboard with calendar + upcoming events, and ability to create new events / delete existing events.

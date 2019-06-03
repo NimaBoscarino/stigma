@@ -55,7 +55,6 @@ const PhotoList = ({artist}) => {
 const PortfolioTab = ({ artist }) => {
   return (
     <div>
-      <p>Hey this is a description lol</p>
       <PhotoList artist={artist} />
     </div>      
   )

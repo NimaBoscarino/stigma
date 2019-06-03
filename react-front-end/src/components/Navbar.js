@@ -16,6 +16,11 @@ const LogoText = styled.h1`
   color: white;
   margin: 0;
 `
+const UserName = styled.h1`
+  font-size: 200%;
+  color: white;
+  margin: 0 15px 0 0;
+`
 
 const StyledHeader = styled.header`
   max-width: 100%;
@@ -28,7 +33,7 @@ const StyledHeader = styled.header`
   align-items: center;
 `
 
-const Navbar = ({ logout }) => {
+const Navbar = ({ user, logout }) => {
   return (
     <StyledHeader>
       <div style={{
@@ -45,7 +50,17 @@ const Navbar = ({ logout }) => {
             <Logo alt="logo" src="/logo.svg" />
           </LogoText>
         </Link>
-        <Button onClick={logout}>Log out</Button>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',          
+        }}>
+          <UserName>
+            {user.name}
+          </UserName>
+          <Button onClick={logout}>Log out</Button>
+        </div>
       </div>
     </StyledHeader>
   )

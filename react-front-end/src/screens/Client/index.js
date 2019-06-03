@@ -8,7 +8,7 @@ const ClientHomeScreen = ({ user, logout, match }) => {
   console.log('MATCH', match)
   return (
     <div>
-      <Navbar logout={logout}/>
+      <Navbar user={user} logout={logout}/>
       <Route exact path={`${match.path}`} component={() => <Home user={user}/>} />
       <Route exact path={`/:id`} component={(props) => (
         <ArtistScreen {...props} user={user}/>

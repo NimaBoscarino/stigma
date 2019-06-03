@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 
-const FollowingList = ({ user }) => {
+const FollowedArtistsList = ({ user }) => {
   const [followingArtists, setFollowingArtists] = useState([])
   
   const fetchData = () => {
@@ -34,4 +34,4 @@ const FollowingList = ({ user }) => {
   )
 }
 
-export default FollowingList
+export default FollowedArtistsList

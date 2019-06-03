@@ -1,0 +1,17 @@
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+
+const ArtistHomeScreen = ({ user }) => {
+  return (
+    <div>
+      <h2>ARTIST HOME</h2>
+      <p>
+        Dashboard with calendar + upcoming events, and ability to create new events / delete existing events.
+
+        Also see current interactions with clients
+      </p>
+    </div>
+  )
+}
+
+export default ArtistHomeScreen

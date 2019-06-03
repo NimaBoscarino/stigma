@@ -3,26 +3,16 @@ import axios from 'axios';
 import './App.css';
 import './components/ArtistCard'
 import ArtistCard from './components/ArtistCard';
-import ArtistScreen from './screens/ArtistScreen'
 import LoginScreen from './screens/LoginScreen/index'
+import ArtistView from './screens/Artist/index'
+import ClientView from './screens/Client/index'
 import createPersistedState from 'use-persisted-state';
-import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import FollowedArtistsList from './components/FollowedArtistsList'
 import { Button } from 'antd'
+import PrivateRoute from './components/PrivateRoute'
 
 const useUserState = createPersistedState('user');
-
-const PrivateRoute = ({ user, ...rest }) => (
-  <Route {...rest} render={(props) => (
-    // fakeAuth.isAuthenticated === true
-      user
-      ? rest.render(props)
-      : <Redirect to={{
-          pathname: '/login',
-          state: { from: props.location }
-        }} />
-  )} />
-)
 
 const RedirectHomeRoute = ({ user, ...rest }) => (
   <Route {...rest} render={(props) => (
@@ -35,45 +25,6 @@ const RedirectHomeRoute = ({ user, ...rest }) => (
       : rest.render()
   )} />
 )
-
-const ArtistsContainer = ({user}) => {
-
-  // the container is responsible for both fetching and displaying artists
-  // should it be split into two? Maybe!
-
-  const [artists, setArtists] = useState([])
-
-  const fetchData = () => {
-    const fetchDataAsync = async () => {
-      const result = await axios.get('/api/artists', {
-        headers: {
-          client: user.client,
-          'access-token': user['access-token'],
-          uid: user.uid
-        }
-      })
-      setArtists(result.data.artists)
-    }
-
-    fetchDataAsync()
-  }
-
-  useEffect(fetchData, [user]);
-
-
-  return (
-    <div style={{
-      padding: '25px',
-      display: 'flex',
-      flexDirection: 'row',
-      flexWrap: 'wrap'
-    }}>
-      {
-        artists.map(a => <ArtistCard key={a.details.id} user={user} artist={a}/>)
-      }
-    </div>
-  )
-}
 
 const App = (props) => {
   
@@ -88,26 +39,25 @@ const App = (props) => {
   return (
     <div className="App" style={{ height: '100%' }}>
       <Router>
-        {/* <Link to="/">Home</Link> */}
-        
-        <PrivateRoute exact path="/" user={user} render={() => (
-          <ArtistsContainer user={user} />
-        )}/>
+        <Switch>
+          {/* <Link to="/">Home</Link> */}
+          
+          <RedirectHomeRoute exact path="/login" user={user} render={() => (
+            <LoginScreen user={user} setUser={setUser} />
+          )}/>
 
-        <RedirectHomeRoute exact path="/login" user={user} render={() => (
-          <LoginScreen user={user} setUser={setUser} />
-        )}/>
+          <PrivateRoute path="/" user={user} render={(props) => {
+            return user.type === 'Artist' ? 
+              <ArtistView {...props} logout={logout} user={user}/> :
+              <ClientView {...props} logout={logout} user={user}/>
+          }}/>
 
-        <PrivateRoute exact path="/artists/:id" user={user} render={(props) => (
-          <ArtistScreen {...props} user={user}/>
-        )}/>
-
+        </Switch>
+        <h3>{user && user.email}</h3>
+        {
+          user && user.type === 'Client' && <FollowedArtistsList user={user} />
+        }
       </Router>
-      <h3>{user && user.email}</h3>
-      <h3>{user && <Button onClick={logout}>Log out</Button>}</h3>
-      {
-        user && user.type === 'Client' && <FollowedArtistsList user={user} />
-      }
     </div>
   );
 }

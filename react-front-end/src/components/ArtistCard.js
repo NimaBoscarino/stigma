@@ -6,7 +6,7 @@ import axios from 'axios'
 const { Meta } = Card;
 
 const LinkToProfile = ({artist}) => (
-  <Link to={`/artists/${artist.username}`}>
+  <Link to={`/${artist.username}`}>
     <Icon type="calendar" />
   </Link>
 )

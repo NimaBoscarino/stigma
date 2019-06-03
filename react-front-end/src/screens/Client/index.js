@@ -4,12 +4,11 @@ import { Route } from 'react-router-dom'
 import Home from './Home'
 import ArtistScreen from '../ArtistScreen'
 
-const ClientHomeScreen = ({ user, logout, match }) => {
-  console.log('MATCH', match)
+const ClientIndex = ({ user, logout, match }) => {
   return (
     <div>
       <Navbar user={user} logout={logout}/>
-      <Route exact path={`${match.path}`} component={() => <Home user={user}/>} />
+      <Route exact path={`/`} component={() => <Home user={user}/>} />
       <Route exact path={`/:id`} component={(props) => (
         <ArtistScreen {...props} user={user}/>
       )} />
@@ -17,4 +16,4 @@ const ClientHomeScreen = ({ user, logout, match }) => {
   )
 }
 
-export default ClientHomeScreen
+export default ClientIndex

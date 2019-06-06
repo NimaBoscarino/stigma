@@ -11,6 +11,18 @@ class Artist < User
       .map { |name, email, text| {
         name: name, email: email, text: text
       }}
+
+  end
+
+  def booked_clients2
+    # This is also a solution... which is more efficient?
+    # Looking at the generated SQL leads me to believe v1 is more efficient
+    Client.joins(interactions: :artist).where("interactions.artist_id": id, "interactions.type": 'Booking')
+      .pluck(:name, :email, :text)
+      .map { |name, email, text| {
+        name: name, email: email, text: text
+      }}
+
   end
 
   def inquired_clients

@@ -17,8 +17,8 @@ Rails.application.routes.draw do
     resources :followings
     resources :events, only: [:index, :destroy]
   end
-
-  get '*path', to: "application#fallback_index_html", constraints: ->(request) do
+  
+  get '*path', to: "static_pages#fallback_index_html", constraints: ->(request) do
     !request.xhr? && request.format.html?
   end
   

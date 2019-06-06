@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import makeAxios from './utils/axios'
 import './App.css';
 import './components/ArtistCard'
 import ArtistCard from './components/ArtistCard';
@@ -16,7 +17,6 @@ const useUserState = createPersistedState('user');
 
 const RedirectHomeRoute = ({ user, ...rest }) => (
   <Route {...rest} render={(props) => (
-    // fakeAuth.isAuthenticated === true
       user
       ? <Redirect to={{
           pathname: '/',
@@ -30,6 +30,8 @@ const App = (props) => {
   
   const [user, setUser] = useUserState(null)
 
+  makeAxios(axios, user)
+
   const logout = () => {
     // TODO: call sign_out endpoint
 
@@ -39,9 +41,7 @@ const App = (props) => {
   return (
     <div className="App" style={{ height: '100%' }}>
       <Router>
-        <Switch>
-          {/* <Link to="/">Home</Link> */}
-          
+        <Switch>          
           <RedirectHomeRoute exact path="/login" user={user} render={() => (
             <LoginScreen user={user} setUser={setUser} />
           )}/>
@@ -51,12 +51,7 @@ const App = (props) => {
               <ArtistView {...props} logout={logout} user={user}/> :
               <ClientView {...props} logout={logout} user={user}/>
           }}/>
-
         </Switch>
-        {/* <h3>{user && user.email}</h3>
-        {
-          user && user.type === 'Client' && <FollowedArtistsList user={user} />
-        } */}
       </Router>
     </div>
   );

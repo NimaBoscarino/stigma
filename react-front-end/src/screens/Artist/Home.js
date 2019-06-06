@@ -8,14 +8,7 @@ const HomeScreen = ({ user }) => {
 
   const fetchBooksStatus = () => {
     const fetchDataAsync = async () => {
-      const result = await axios.get(`/api/artists/${user.id}/booksStatus`, {
-        headers: {
-          client: user.client,
-          'access-token': user['access-token'],
-          uid: user.uid
-        }
-      })
-      console.log('new value', result.data.booksStatus)
+      const result = await axios.get(`/artists/${user.id}/booksStatus`)
       setBooksOpen(result.data.booksStatus)
     }
 
@@ -33,28 +26,12 @@ const HomeScreen = ({ user }) => {
   }
   
   const openBooks = async () => {
-    const result = await axios(`/api/artists/${user.id}/openBooks`, {
-      method: 'post',
-      headers: {
-        client: user.client,
-        'access-token': user['access-token'],
-        uid: user.uid
-      }
-    })
-
+    await axios.post(`/artists/${user.id}/openBooks`)
     setBooksOpen(true)
   }
 
   const closeBooks = async () => {
-    const result = await axios(`/api/artists/${user.id}/closeBooks`, {
-      method: 'post',
-      headers: {
-        client: user.client,
-        'access-token': user['access-token'],
-        uid: user.uid
-      }
-    })
-
+    await axios.post(`/artists/${user.id}/closeBooks`)
     setBooksOpen(false)
   }
   

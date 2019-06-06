@@ -21,10 +21,7 @@ const CalendarScreen = ({ user }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(
-        `/api/artists/${user.username}/events`,
-      );
-
+      const result = await axios.get(`/artists/${user.username}/events`);
       setEvents(result.data.events);
     };
 

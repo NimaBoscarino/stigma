@@ -25,14 +25,7 @@ const QuestionsScreen = ({ user }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(`/api/artists/${user.id}/clients?status=inquiry`, {
-        headers: {
-          client: user.client,
-          'access-token': user['access-token'],
-          uid: user.uid
-        }
-      })
-
+      const result = await axios.get(`/artists/${user.id}/clients?status=inquiry`)
       setClients(result.data.clients)
     };
 

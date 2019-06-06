@@ -11,13 +11,7 @@ const ArtistsContainer = ({user}) => {
 
   const fetchData = () => {
     const fetchDataAsync = async () => {
-      const result = await axios.get('/api/artists', {
-        headers: {
-          client: user.client,
-          'access-token': user['access-token'],
-          uid: user.uid
-        }
-      })
+      const result = await axios.get('/artists')
       setArtists(result.data.artists)
     }
 

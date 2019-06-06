@@ -9,10 +9,7 @@ export default ({ artist }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(
-        `/api/artists/${artist.username}/events`,
-      );
-
+      const result = await axios.get(`/artists/${artist.username}/events`);
       setEvents(result.data.events);
     };
 

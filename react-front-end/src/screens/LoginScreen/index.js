@@ -44,7 +44,7 @@ const LoginScreen = ({ user, setUser }) => {
   
   const onSignIn = async (values) => {
     const result = await axios.post(
-      `/api/auth/sign_in`, {
+      `/auth/sign_in`, {
         email: values.email + '@test.com',
         password: values.password
       }

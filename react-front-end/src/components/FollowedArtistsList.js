@@ -9,13 +9,7 @@ const FollowedArtistsList = ({ user }) => {
     if (!user) return
 
     const fetchDataAsync = async () => {
-      const result = await axios.get('/api/followings', {
-        headers: {
-          client: user.client,
-          'access-token': user['access-token'],
-          uid: user.uid
-        }
-      })
+      const result = await axios.get('/followings')
       setFollowingArtists(result.data.followings)
     }
 

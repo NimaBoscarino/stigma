@@ -33,10 +33,7 @@ const PhotoList = ({artist}) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(
-        `/api/artists/${artist.username}/photos`,
-      );
-
+      const result = await axios.get(`/artists/${artist.username}/photos`);
       setPhotos(result.data.photos);
     };
 

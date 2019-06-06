@@ -17,13 +17,7 @@ export default class ArtistScreen extends Component {
   }
 
   fetchData = () => {
-    axios.get(`/api/artists/${this.props.match.params.id}`, {
-      headers: {
-        client: this.props.user.client,
-        'access-token': this.props.user['access-token'],
-        uid: this.props.user.uid
-      }
-    })
+    axios.get(`/artists/${this.props.match.params.id}`)
     .then((response) => {
       this.setState({
         artist: response.data.artist
@@ -32,7 +26,7 @@ export default class ArtistScreen extends Component {
   }
 
   render() {
-    const {artist, photos} = this.state
+    const {artist} = this.state
 
     if (!artist) return 'Loading'
 

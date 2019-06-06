@@ -25,7 +25,7 @@ const ClientList = ({ user }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(`/api/artists/${user.id}/clients?status=booking`, {
+      const result = await axios.get(`/artists/${user.id}/clients?status=booking`, {
         headers: {
           client: user.client,
           'access-token': user['access-token'],

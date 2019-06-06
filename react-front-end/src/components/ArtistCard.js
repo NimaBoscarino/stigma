@@ -18,31 +18,15 @@ export default (props) => {
   const [heart, setHeart] = useState(followed)
 
   const followArtist = async () => {
-    const result = await axios('/api/followings', {
-      method: 'post',
-      data: {
-        artist_id: details.id
-      },
-      headers: {
-        client: user.client,
-        'access-token': user['access-token'],
-        uid: user.uid
-      }
+    const result = await axios.post('/followings', {
+      artist_id: details.id
     })
 
     setHeart(true)
   }
 
   const unfollowArtist = async () => {
-    const result = await axios(`/api/followings/${details.id}`, {
-      method: 'delete',
-      headers: {
-        client: user.client,
-        'access-token': user['access-token'],
-        uid: user.uid
-      }
-    })
-
+    const result = await axios.delete(`/followings/${details.id}`)
     setHeart(false)
   }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Calendar, Badge, Card } from 'antd';
+import CreateFlashEventModal from '../../components/Artist/CreateFlashEventModal'
 import moment from 'moment';
 
 const EventCard = ({event}) => {
@@ -47,6 +48,11 @@ const CalendarScreen = ({ user }) => {
     );
   }
   
+  const addEvent = (event) => {
+    console.log(event, events)
+    setEvents([...events, event])
+  }
+
   const selectedDayEvents = date && eventsForDay(date)
 
   return (
@@ -55,7 +61,8 @@ const CalendarScreen = ({ user }) => {
       flexDirection: 'row'
     }}>
       <div style={{
-        width: '80%'
+        width: '80%',
+        height: '50%'
       }}>
         <Calendar
           onSelect={onSelect}
@@ -63,7 +70,13 @@ const CalendarScreen = ({ user }) => {
           dateCellRender={dateCellRender}
         />
       </div>
-      <div>
+      <div style={{
+        padding: '15px'
+      }}>
+        <CreateFlashEventModal
+          user={user}
+          addEvent={addEvent}
+        />
         <h2>{date && `Events for: ${date.format('YYYY-MM-DD')}`}</h2>
         {
           selectedDayEvents.map(e => (

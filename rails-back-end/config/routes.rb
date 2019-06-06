@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
 
     resources :followings
-    resources :events, only: [:destroy]
+    resources :events, only: [:index, :destroy]
   end
 
 end

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ArtistCard from '../../components/ArtistCard'
+import UpcomingEventsList from '../../components/Client/UpcomingEventsList';
 
 const ArtistsContainer = ({user}) => {
 
@@ -39,6 +40,7 @@ const ClientHomeScreen = ({ user }) => {
   return (
     <div>
       <ArtistsContainer user={user} /> 
+      <UpcomingEventsList />
     </div>
   )
 }

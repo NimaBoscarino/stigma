@@ -6,15 +6,27 @@ class Artist < User
   has_one   :artist_information
 
   def booked_clients
-    interactions.booked.joins(:client).pluck(:name, :email, :text).map { |name, email, text| {name: name, email: email, text: text}}
+    interactions.booked.joins(:client)
+      .pluck(:name, :email, :text)
+      .map { |name, email, text| {
+        name: name, email: email, text: text
+      }}
   end
 
   def inquired_clients
-    interactions.inquired.joins(:client).pluck(:name, :email, :text).map { |name, email, text| {name: name, email: email, text: text}}
+    interactions.inquired.joins(:client)
+      .pluck(:name, :email, :text)
+      .map { |name, email, text| {
+        name: name, email: email, text: text
+      }}
   end
 
   def applied_clients
-    interactions.applied.joins(:client).pluck(:name, :email, :text).map { |name, email, text| {name: name, email: email, text: text}}
+    interactions.applied.joins(:client)
+      .pluck(:name, :email, :text)
+      .map { |name, email, text| {
+        name: name, email: email, text: text
+      }}
   end
 
   def books_open?

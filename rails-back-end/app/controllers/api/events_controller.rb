@@ -2,12 +2,20 @@ class Api::EventsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    artist = Artist.find_by(username: params['artist_id'])
-    events = artist.events
+    if params['artist_id']
+      artist = Artist.find_by(username: params['artist_id'])
+      events = artist.events
 
-    render :json => {
-      events: events
-    }
+      render :json => {
+        events: events
+      }
+    else
+      events = current_user.upcoming_events
+
+      render :json => {
+        events: events
+      }
+    end
   end
 
   def create

@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import makeAxios from './utils/axios'
 import './App.css';
 import './components/ArtistCard'
-import ArtistCard from './components/ArtistCard';
 import LoginScreen from './screens/LoginScreen/index'
 import ArtistView from './screens/Artist/index'
 import ClientView from './screens/Client/index'
 import createPersistedState from 'use-persisted-state';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
-import FollowedArtistsList from './components/FollowedArtistsList'
-import { Button } from 'antd'
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import PrivateRoute from './components/PrivateRoute'
 
 const useUserState = createPersistedState('user');

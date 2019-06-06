@@ -7,7 +7,6 @@ const columns = [
     title: 'Name',
     dataIndex: 'name',
     key: 'name',
-    render: text => <a href="javascript:;">{text}</a>,
   },
   {
     title: 'Email',
@@ -18,38 +17,7 @@ const columns = [
     title: 'Subject',
     dataIndex: 'text',
     key: 'text',
-  },
-  // {
-  //   title: 'Tags',
-  //   key: 'tags',
-  //   dataIndex: 'tags',
-  //   render: tags => (
-  //     <span>
-  //       {tags.map(tag => {
-  //         let color = tag.length > 5 ? 'geekblue' : 'green';
-  //         if (tag === 'loser') {
-  //           color = 'volcano';
-  //         }
-  //         return (
-  //           <Tag color={color} key={tag}>
-  //             {tag.toUpperCase()}
-  //           </Tag>
-  //         );
-  //       })}
-  //     </span>
-  //   ),
-  // },
-  {
-    title: 'Action',
-    key: 'action',
-    render: (text, record) => (
-      <span>
-        <a href="javascript:;">View</a>
-        <Divider type="vertical" />
-        <a href="javascript:;">Delete</a>
-      </span>
-    ),
-  },
+  }
 ];
 
 const ClientList = ({ user }) => {
@@ -57,7 +25,7 @@ const ClientList = ({ user }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(`/api/artists/${user.id}/clients`, {
+      const result = await axios.get(`/api/artists/${user.id}/clients?status=booking`, {
         headers: {
           client: user.client,
           'access-token': user['access-token'],

@@ -5,18 +5,18 @@ import axios from 'axios'
 const columns = [
   {
     title: 'Name',
-    dataIndex: 'details.name',
+    dataIndex: 'name',
     key: 'name',
     render: text => <a href="javascript:;">{text}</a>,
   },
   {
     title: 'Email',
-    dataIndex: 'details.email',
+    dataIndex: 'email',
     key: 'email',
   },
   {
     title: 'Subject',
-    dataIndex: 'interaction.text',
+    dataIndex: 'text',
     key: 'text',
   },
   // {

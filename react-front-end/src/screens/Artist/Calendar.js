@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Calendar, Badge, Card } from 'antd';
+import { Calendar, Badge, Card, Button } from 'antd';
 import CreateFlashEventModal from '../../components/Artist/CreateFlashEventModal'
 import moment from 'moment';
 
-const EventCard = ({event}) => {
+const EventCard = ({event, onDelete}) => {
+  const deleteEvent = async () => {
+    await axios.delete(`/events/${event.id}`)
+    onDelete(event)
+  }
 
   return (
     <Card size="small" title={event.name} style={{
@@ -12,6 +16,12 @@ const EventCard = ({event}) => {
       marginBottom: '5px'
     }}>
       <p>{moment(event.date).format('DD-MM-YYYY')}</p>
+      <Button 
+        onClick={deleteEvent}
+        type="danger" 
+        block>
+        Delete
+      </Button>
     </Card>
   )
 }
@@ -49,8 +59,11 @@ const CalendarScreen = ({ user }) => {
   }
   
   const addEvent = (event) => {
-    console.log(event, events)
     setEvents([...events, event])
+  }
+
+  const removeEvent = (event) => {
+    setEvents(events.filter(e => e.id !== event.id))
   }
 
   const selectedDayEvents = date && eventsForDay(date)
@@ -80,7 +93,11 @@ const CalendarScreen = ({ user }) => {
         <h2>{date && `Events for: ${date.format('YYYY-MM-DD')}`}</h2>
         {
           selectedDayEvents.map(e => (
-            <EventCard key={e.id} event={e} />
+            <EventCard
+              key={e.id}
+              event={e}
+              onDelete={removeEvent}
+            />
           ))
         }
       </div>

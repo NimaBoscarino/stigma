@@ -31,4 +31,18 @@ class Api::EventsController < ApplicationController
       
   end
 
+  def destroy
+    event = Event.find(params['id'])
+    if current_user.id == event.artist_id
+      event.destroy
+      render :json => {
+        message: "Destroyed event!"
+      }
+    else
+      render :json => {
+        message: "You're not allowed to do that!"
+      }
+    end
+  end
+
 end

@@ -33,7 +33,7 @@ module RailsBackEnd
     config.api_only = true
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'http://localhost:3000'
+        origins 'http://localhost:3000', 'https://stigma-ink.herokuapp.com'
         resource '*', 
          :headers => :any, 
          :expose => ['access-token', 'expiry', 'token-type', 'uid', 'client'],

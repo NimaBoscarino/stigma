@@ -37,6 +37,8 @@ end
 
 fearbear = Artist.create name: 'Olivia Harrison', username: 'fearbear', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/297314c8f89bd600f3e1100445469b40/5D981F74/t51.2885-19/s150x150/40970299_402813163583917_4079292631308304384_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net', email: 'fearbear@test.com', password: 'artist'
 
+jess = Artist.create name: 'Jess Chen', username: '__jesschen__', avatar: 'https://scontent-sea1-1.cdninstagram.com/vp/da7139f3d6b1981c03e5190edf6c9f5d/5D92D655/t51.2885-19/s150x150/34982397_218816662231559_7841887027183222784_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com', email: 'jess@test.com', password: 'artist'
+
 nomi = Artist.create name: 'Nomi Chi', username: 'nomi_chi', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/9d6e02955a78315ab3f18e45ad3c7fb2/5D99ADFD/t51.2885-19/s150x150/23596480_1959154197667964_2542338945211957248_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net', email: 'nomi@test.com', password: 'artist'
 
 zox = Artist.create name: 'Zox', username: 'foxfeet', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/8d18cfb2584396b1e54cba5e2454ce50/5D7F7FAD/t51.2885-19/s150x150/54247524_257999158485303_3604351084677562368_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net', email: 'zox@test.com', password: 'artist'
@@ -80,6 +82,22 @@ fearbear.photos.create url: 'https://static.wixstatic.com/media/1faa96_711ca1c4d
 fearbear.photos.create url: 'https://instagram.fyvr2-1.fna.fbcdn.net/vp/0211cd1271eac488cc7069c8c8c69eee/5D91ACDC/t51.2885-15/e35/p1080x1080/58468319_445592076234879_2916524627390798880_n.jpg?_nc_ht=instagram.fyvr2-1.fna.fbcdn.net'
 
 fearbear.photos.create url: 'https://instagram.fyvr2-1.fna.fbcdn.net/vp/87f7f213c2c0ca8d0fb6be1be0e408c0/5D99C19A/t51.2885-15/e35/s1080x1080/59183216_625039924667192_202839854506429916_n.jpg?_nc_ht=instagram.fyvr2-1.fna.fbcdn.net'
+
+jess.photos.create url: 'https://scontent-sea1-1.cdninstagram.com/vp/e453a0ddbadbdcf41303b19e323eb7f4/5D8401BF/t51.2885-15/e35/44436326_1824698654322812_3829724848467161348_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com'
+
+jess.photos.create url: 'https://scontent-sea1-1.cdninstagram.com/vp/77b5bcc8a5a5a20f4706544b28185c3f/5D7F8CAB/t51.2885-15/e35/46585578_2289987514565700_2197355931686478857_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com'
+
+jess.photos.create url: 'https://scontent-sea1-1.cdninstagram.com/vp/ead79b4e6c7308793ccefd315a7c6ab4/5D8AF422/t51.2885-15/e35/49907583_356879521533250_1415506079390817620_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com'
+
+jess.photos.create url: 'https://scontent-sea1-1.cdninstagram.com/vp/1fecfb7aa4b60df40f78b6057ae7ba70/5D794A47/t51.2885-15/e35/57587103_133121414461358_6103459756450790608_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com'
+
+jess.photos.create url: 'https://scontent-sea1-1.cdninstagram.com/vp/24ddc08e331af79c347d1e4c440c922f/5D8E0F14/t51.2885-15/e35/53813382_866174030394369_3067582705929271193_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com'
+
+jess.photos.create url: 'https://scontent-sea1-1.cdninstagram.com/vp/4006677444bbac715701c96613db2fa0/5D7F8D62/t51.2885-15/e35/p1080x1080/62080724_1085925895128478_605962911234466528_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com'
+
+jess.photos.create url: 'https://scontent-sea1-1.cdninstagram.com/vp/66100e39019ec0e5166a5549b66121a1/5D834788/t51.2885-15/e35/47586394_778514665841211_2317540314683163586_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com'
+
+jess.photos.create url: 'https://scontent-sea1-1.cdninstagram.com/vp/561da9c16bf275c7583bc02d71af8075/5D9EDD0D/t51.2885-15/e35/45822399_2138750106392368_9156762823140246747_n.jpg?_nc_ht=scontent-sea1-1.cdninstagram.com'
 
 nomi.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/ef52a3561af922b4ac8631e67d76e170/5D96196A/t51.2885-15/e35/s1080x1080/59412975_2216882615095966_60554691593011496_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
 
@@ -128,6 +146,11 @@ fearbear.events.create name: 'Flash Event', date: 4.days.from_now
 fearbear.events.create name: 'Flash Event', date: 3.days.ago
 fearbear.events.create name: 'Flash Event', date: 10.days.from_now
 
+jess.events.create name: 'Flash Event', date: 6.days.from_now
+jess.events.create name: 'Flash Event', date: 2.days.from_now
+jess.events.create name: 'Flash Event', date: 7.days.ago
+jess.events.create name: 'Flash Event', date: 9.days.from_now
+
 nomi.events.create name: 'Flash Event', date: 7.days.from_now
 nomi.events.create name: 'Flash Event', date: 2.days.from_now
 nomi.events.create name: 'Flash Event', date: 12.days.ago
@@ -149,6 +172,7 @@ whizazaps.events.create name: 'Flash Event', date: 7.days.ago
 whizazaps.events.create name: 'Flash Event', date: 4.days.from_now
 
 ArtistInformation.create artist: fearbear, books_open: true
+ArtistInformation.create artist: jess, books_open: true
 ArtistInformation.create artist: nomi, books_open: false
 ArtistInformation.create artist: zox, books_open: false
 ArtistInformation.create artist: al, books_open: true

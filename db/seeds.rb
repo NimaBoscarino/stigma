@@ -6,34 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Drop all artists first
-Artist.all.each do |a|
-  a.destroy
-end
-
-Client.all.each do |a|
-  a.destroy
-end
-
-Interaction.all.each do |a|
-  a.destroy
-end
-
-Photo.all.each do |a|
-  a.destroy
-end
-
-Event.all.each do |a|
-  a.destroy
-end
-
-Following.all.each do |a|
-  a.destroy
-end
-
-ArtistInformation.all.each do |a|
-  a.destroy
-end
+# Drop all first
+Artist.delete_all
+Client.delete_all
+Interaction.delete_all
 
 fearbear = Artist.create name: 'Olivia Harrison', username: 'fearbear', avatar: 'https://instagram.fyvr4-1.fna.fbcdn.net/vp/297314c8f89bd600f3e1100445469b40/5D981F74/t51.2885-19/s150x150/40970299_402813163583917_4079292631308304384_n.jpg?_nc_ht=instagram.fyvr4-1.fna.fbcdn.net', email: 'fearbear@test.com', password: 'artist'
 

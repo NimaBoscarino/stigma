@@ -3,10 +3,10 @@ class Artist < User
   has_many  :inquiries
   has_many  :bookings
   has_many  :applications
-  has_many  :photos
-  has_many  :events
+  has_many  :photos, dependent: :destroy
+  has_many  :events, dependent: :destroy
   has_many  :clients, through: :interactions
-  has_one   :artist_information
+  has_one   :artist_information, dependent: :destroy
 
   def booked_clients
     bookings.joins(:client)

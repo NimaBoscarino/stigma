@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import ArtistTabsCard from '../components/ArtistTabsCard'
+import ArtistTabsCard from '../../components/ArtistTabsCard'
+import CreateInquiryModal from '../../components/Client/CreateInquiryModal'
+import CreateApplicationModal from '../../components/Client/CreateApplicationModal'
+
+import { Tag } from 'antd'
 
 export default class ArtistScreen extends Component {
   constructor(props) {
@@ -43,8 +47,20 @@ export default class ArtistScreen extends Component {
         }}>
           <img alt={artist.name} src={artist.avatar} />
           <div>
+            {
+              artist.books_open && (<Tag color="green">Books open!</Tag>)
+            }          
             <h2>{artist.name}</h2>
             <h3>{artist.username}</h3>
+            <div style={{
+              display: 'flex',
+              flexDirection: 'row'
+            }}>
+              {
+                artist.books_open && (<CreateApplicationModal />)
+              }
+              <CreateInquiryModal />
+            </div>
           </div>
         </div>
         <ArtistTabsCard artist={artist} />

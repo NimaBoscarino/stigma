@@ -74,7 +74,7 @@ class CreateInquiryModal extends React.Component {
           type="primary"
           onClick={this.showModal}
           style={{
-            margin: '5px'
+            marginRight: '5px'
           }}
         >
           Apply

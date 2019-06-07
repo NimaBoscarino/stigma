@@ -15,6 +15,11 @@ const columns = [
   },
   {
     title: 'Subject',
+    dataIndex: 'subject',
+    key: 'subject',
+  },
+  {
+    title: 'Text',
     dataIndex: 'text',
     key: 'text',
   }

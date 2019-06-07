@@ -12,11 +12,6 @@ const columns = [
     title: 'Email',
     dataIndex: 'email',
     key: 'email',
-  },
-  {
-    title: 'Subject',
-    dataIndex: 'text',
-    key: 'text',
   }
 ];
 

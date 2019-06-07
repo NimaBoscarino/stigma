@@ -1,15 +1,18 @@
 class Artist < User
   has_many  :interactions
+  has_many  :inquiries
+  has_many  :bookings
+  has_many  :applications
   has_many  :photos
   has_many  :events
   has_many  :clients, through: :interactions
   has_one   :artist_information
 
   def booked_clients
-    interactions.booked.joins(:client)
-      .pluck(:name, :email, :text)
-      .map { |name, email, text| {
-        name: name, email: email, text: text
+    bookings.joins(:client)
+      .pluck(:name, :email)
+      .map { |name, email| {
+        name: name, email: email
       }}
 
   end
@@ -26,18 +29,18 @@ class Artist < User
   end
 
   def inquired_clients
-    interactions.inquired.joins(:client)
-      .pluck(:name, :email, :text)
-      .map { |name, email, text| {
-        name: name, email: email, text: text
+    inquiries.joins(:client, :inquiry_information)
+      .pluck(:name, :email, :subject, :text)
+      .map { |name, email, subject, text| {
+        name: name, email: email, subject: subject, text: text
       }}
   end
 
   def applied_clients
-    interactions.applied.joins(:client)
-      .pluck(:name, :email, :text)
-      .map { |name, email, text| {
-        name: name, email: email, text: text
+    applications.joins(:client)
+      .pluck(:name, :email)
+      .map { |name, email| {
+        name: name, email: email
       }}
   end
 

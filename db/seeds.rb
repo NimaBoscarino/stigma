@@ -63,9 +63,11 @@ dwight.followings.create artist: fearbear
 dwight.followings.create artist: al
 dwight.followings.create artist: zox
 
-nima_fearbear = Inquiry.create client: nima, artist: fearbear, text: 'Hey can I have tattoo'
-dwight_fearbear = Booking.create client: dwight, artist: fearbear, text: 'Wow so cool tats pls'
-jim_fearbear = Application.create client: jim, artist: fearbear, text: 'I need tattoo of my wife'
+nima_fearbear = Inquiry.create client: nima, artist: fearbear
+nima_inquiry = InquiryInformation.create subject: 'Do you do faces?', text: "I like ur tats, I want one on face. do you do? thx", inquiry: nima_fearbear
+
+dwight_fearbear = Booking.create client: dwight, artist: fearbear # , text: 'Wow so cool tats pls'
+jim_fearbear = Application.create client: jim, artist: fearbear # , text: 'I need tattoo of my wife'
 
 fearbear.photos.create url: 'https://static.wixstatic.com/media/1faa96_b40cb25c226c4cdc93a6b3c6595b836b~mv2.jpg/v1/fill/w_549,h_686,al_c,q_90,usm_0.66_1.00_0.01/1faa96_b40cb25c226c4cdc93a6b3c6595b836b~mv2.webp'
 

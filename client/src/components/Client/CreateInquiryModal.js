@@ -52,7 +52,7 @@ class CreateInquiryModal extends React.Component {
   };
 
   handleCreate = () => {
-    const user = this.props.user
+    const artist = this.props.artist
     const form = this.formRef.props.form;
     form.validateFields(async (err, values) => {
       if (err) {
@@ -61,16 +61,12 @@ class CreateInquiryModal extends React.Component {
 
       console.log('Received values of form: ', values);
 
-      // send to server
-      // const result = await axios.post(
-      //   `/artists/${user.id}/events`, {
-      //     name: values.name,
-      //     description: values.description,
-      //     date: values.datetime.toISOString()
-      //   }, 
-      // );
-
-      // this.props.addEvent(result.data.event)
+      const result = await axios.post(
+        `/artists/${artist.id}/interactions?type=inquiry`, {
+          subject: values.subject,
+          text: values.question,
+        }, 
+      );
   
       form.resetFields();
       this.setState({ visible: false });

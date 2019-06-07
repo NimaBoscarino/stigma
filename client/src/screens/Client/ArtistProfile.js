@@ -59,7 +59,7 @@ export default class ArtistScreen extends Component {
               {
                 artist.books_open && (<CreateApplicationModal />)
               }
-              <CreateInquiryModal />
+              <CreateInquiryModal artist={artist}/>
             </div>
           </div>
         </div>

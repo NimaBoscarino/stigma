@@ -37,7 +37,7 @@ const CreateInquiryForm = Form.create({ name: 'form_in_modal' })(
         >
           <Form layout="vertical">
             <Form.Item label="Title">
-              {getFieldDecorator('title', {
+              {getFieldDecorator('subject', {
                 rules: [{ required: true, message: 'Please input a short title!' }],
               })(<Input />)}
             </Form.Item>
@@ -106,10 +106,10 @@ class CreateApplicationModal extends React.Component {
       }
       console.log(artist)
       console.log('Received values of form: ', values);
-      const { title, description, placement, coverUp, consultation } = values
+      const { subject, description, placement, coverUp, consultation } = values
       const result = await axios.post(
         `/artists/${artist.id}/interactions?type=application`, {
-          title,
+          subject,
           description,
           placement,
           coverUp,

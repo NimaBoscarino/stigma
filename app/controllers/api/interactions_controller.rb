@@ -18,16 +18,36 @@ class Api::InteractionsController < ApplicationController
       subject = params['subject']
       text = params['text']
       inquiry = Inquiry.create client: current_user, artist: artist
-      nima_inquiry = InquiryInformation.create subject: subject, text: text, inquiry: inquiry
+      InquiryInformation.create subject: subject, text: text, inquiry: inquiry
       
       render :json => {
         message: 'Inquiry created!'
       }
+    elsif type == 'application'
+      subject = params['subject']
+      description = params['description']
+      placement = params['placement']
+      consultation = params['consultation']
+      coverUp = params['coverUp']
+
+      # Assuming there was no prior Interaction...
+      application = Application.create client: current_user, artist: artist
+      ApplicationInformation.create subject: subject,
+                                    description: description,
+                                    placement: placement,
+                                    consultation: consultation,
+                                    coverUp: coverUp,
+                                    application: application
+
+      render :json => {
+        message: 'Application created!'
+      }
+
     else
       render :json => {
         message: 'You cannot do that... yet!'
       }
     end
-  end
+  end  
 
 end

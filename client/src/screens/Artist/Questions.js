@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Table, Divider, Tag } from 'antd';
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 const columns = [
@@ -22,7 +23,16 @@ const columns = [
     title: 'Text',
     dataIndex: 'text',
     key: 'text',
-  }
+  },
+  {
+    title: 'Action',
+    key: 'action',
+    render: (text, client) => (
+      <span>
+        <Link to={`/clients/${client.id}`}>View</Link>
+      </span>
+    ),
+  },
 ];
 
 const QuestionsScreen = ({ user }) => {

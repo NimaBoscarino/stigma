@@ -30,9 +30,9 @@ class Artist < User
 
   def inquired_clients
     inquiries.joins(:client, :inquiry_information)
-      .pluck(:name, :email, :subject, :text)
-      .map { |name, email, subject, text| {
-        name: name, email: email, subject: subject, text: text
+      .pluck(:client_id, :name, :email, :subject, :text)
+      .map { |client_id, name, email, subject, text| {
+        id: client_id, name: name, email: email, subject: subject, text: text
       }}
   end
 

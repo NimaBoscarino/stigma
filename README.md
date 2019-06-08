@@ -1,47 +1,76 @@
-# React + Rails No-Fluff Boilerplate
+# Stigma.ink - tattoo booking platform
 
-A boilerplate project for anyone interested in making a project that uses React and Rails.
+[Trello](https://trello.com/b/6YYAo6fh/stigma-ink)
 
-Note! This boilerplate has _no fluff_! That means that there's nothing set up for you to do authentication stuff, there's no Redux stuff, and there's no React Router stuff.
+Deployed on [Stigma.ink](http://www.stigma.ink)
 
-The main important bit is that the React project has `proxy` set to `localhost:3001` in the `package.json` file. Take a look!
+## Checklists
 
-## Running the projects
+### Before Demo
 
-You need **TWO** terminals for this.
+- [ ] Client Registration
+- [ ] Artist Registration
+- [x] Client Login
+- [x] Artist Login
+- [ ] "Application" Flow
+- [ ] "Invitation" Flow
+- [ ] Emails at milestones
+- [ ] Adding reference images
+- [ ] Appointment booking
+- [ ] Flash Events
 
-In one terminal, `cd` into `react-front-end`. Run `npm install`. Then run `npm start` and go to `localhost:3000` in your browser.
+### Debatable
 
-In the other terminal, `cd` into `rails-back-end`. Run `bundle` to install the dependencies. Run `bin/rake db:setup` to create the databases (called rails_project_development by default). Run `bin/rails s` to run the server.
+- [ ] Portfolio uploading
+- [ ] Profile editing
+- [ ] See upcoming events + appointments, from client view
 
-In the browser, you can click on the button and see the data get loaded.
+### Stretch
 
-If this doesn't work, please message me!
+- [ ] "Inquiry" Flow
+- [ ] Google Calendar integration
 
-## Next steps
+## Stigma Interaction Pipelines
 
-From here, you can start working on your project!
+An "Interaction" is a record of continuous communication between a client and an artist for one (1) job.
 
-On the Rails side, you may make new `resources` routes in your `routes.rb` file, e.g. :
+There are three different flows for interactions to happen.
 
-```rb
-namespace :api do
-  resources :dogs # to generate GET /api/dogs, POST /api/dogs, etc...
-end
-```
+### "Application" Flow
 
-Then you can make your various controllers, models, migrations, etc. as you need! The one funky thing is that instead of rendering an HTML view you'll be rendering JSON. [You can return anything from a Rails controller as JSON like this.](https://guides.rubyonrails.org/v5.2/layouts_and_rendering.html#rendering-json) See the example in my "tests_controller".
+1. Artist sets books status to "open"
+2. Client fills out form to create an Application
+   1. Application is made with details, reference images, etc.
+   2. Application is initialized in "locked" mode for the client, meaning that the client is unable to add chat messages until the artist replies.
+3. Artist is immediately able to reply in a chat.
+   1. If the artist replies with a chat message, the client can now freely engage in chatting back/forth with the artist until the Interaction is closed.
+4. Artist is able to accept the Application, which turns the Application into a Booking.
+5. Now that there is a Booking, client and artist can exchange reference images, details, chat, etc.
+6. When it is time, the artist and client can decide on appointment dates.
+   1. There may be many appointment dates, for different purposes. Since every artist has a different flow, there will just be simple Appointments for now.
+      1. Appointments will have their own flow for suggesting/confirming/declining/rescheduling, etc.
+7. When an Appointment happens, the Artist can check the event off as "occured"
+8. When the events have all occured, the artist marks the interaction as complete.
+   1. Complete interactions are not "closed" in effect. Artist and clients can still have follow-ups, TBD.
 
-On the React side, the important bit is that you make you make your AJAXy HTTP requests using something like `axios` or `superagent`. I've set this up to use `axios` already. Check the React code to see an example request being made on-click to the Rails server! You can make your HTTP requests to `/api/anything/you/want`, as long as the route exists on your Rails app.
+### "Invitation" Flow
 
-**NOTE:** I recommend that you namespace all your routes under `api` on the Rails side! Look at how I've done that in the `routes.rb` file, and also how the `tests_controller` is written as:
+Important Assumption: Artist's books status is "closed"
 
-```rb
-class Api::TestsController < ApplicationController
-```
+1. Artist gives a client a secret invite link to application form via FB messenger, IG direct message, etc.
+   1. Example: www.stigma.ink/fearbear?invite=98uafs7das8dyfas78dfasdf7 <--- random key (like a promo code), unlocking the "Apply" button + modal, and permitting the backend to create the Application
+   2. Possibly auto-open the application modal
+2. Client follows link to find application form
+3. Rest of flow is identical to "Application Flow", continuing from point (2).
 
-and it lives in the `api` folder! Put all your controllers in there!
+### "Inquiry" Flow
 
-## Contact
+Note! This is much less important than the other two flows, and should be the lowest priority. Ideally, this does not even need to be ready in time for presenting to potential clients.
 
-Please contact me at `nima@lighthouselabs.com` if you have any questions or requests, or post an issue to this repo.
+1. Client submits a "question" to the Artist through the form on the artist's page. This creates an Inquiry interaction.
+   1. Similar to the Application Flow, the interaction is then locked for the client until the artist replies.
+2. Artist is immediately able to reply in a chat.
+   1. If the artist replies with a chat message, the client can now freely engage in chatting back/forth with the artist until the Interaction is closed.
+3. Artist may permit client to send in an application, by making the "Send Application" button + form visible on the interaction page.
+4. Client fills out application form, like in point (2) of "Application Flow", which transforms Inquiry into Application.
+5. Rest of flow is identical to "Application Flow", continuing from point (3).

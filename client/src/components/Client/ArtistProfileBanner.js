@@ -46,9 +46,9 @@ const ArtistProfileBanner = ({artist}) => {
           flexDirection: 'row'
         }}>
           {
-            artist.books_open && (<CreateApplicationModal />)
+            artist.books_open && (<CreateApplicationModal artist={artist} />)
           }
-          <CreateInquiryModal artist={artist}/>
+          <CreateInquiryModal artist={artist} />
         </div>
       </div>
     </div>    

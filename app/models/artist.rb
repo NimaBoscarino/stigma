@@ -38,9 +38,9 @@ class Artist < User
 
   def applied_clients
     applications.joins(:client, :application_information)
-      .pluck(:name, :email, :subject, :description)
-      .map { |name, email, subject, description| {
-        name: name, email: email, subject: subject, description: description
+      .pluck(:id, :name, :email, :subject, :description)
+      .map { |id, name, email, subject, description| {
+        id: id, name: name, email: email, subject: subject, description: description
       }}
   end
 

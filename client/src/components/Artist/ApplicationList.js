@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Table, Divider, Tag } from 'antd';
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 const columns = [
@@ -23,6 +24,15 @@ const columns = [
     dataIndex: 'description',
     key: 'description',
   },
+  {
+    title: 'Action',
+    key: 'action',
+    render: (text, client) => (
+      <span>
+        <Link to={`/clients/${client.id}`}>View</Link>
+      </span>
+    ),
+  },
 ];
 
 const ClientList = ({ user }) => {
@@ -30,14 +40,7 @@ const ClientList = ({ user }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(`/artists/${user.id}/clients?status=application`, {
-        headers: {
-          client: user.client,
-          'access-token': user['access-token'],
-          uid: user.uid
-        }
-      })
-
+      const result = await axios.get(`/artists/${user.id}/clients?status=application`)
       setClients(result.data.clients)
     };
 

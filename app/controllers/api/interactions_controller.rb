@@ -48,6 +48,24 @@ class Api::InteractionsController < ApplicationController
         message: 'You cannot do that... yet!'
       }
     end
-  end  
+  end
+
+  def show
+    interaction = Interaction.find(params['id'])
+
+    if interaction.type == 'Application'
+      render :json => {
+        client: interaction.client,
+        interaction: interaction,
+        information: interaction.application_information,
+        type: 'Application'
+      }
+
+    else
+      render :json => {
+        message: 'You cannot do that... yet!'
+      }
+    end
+  end
 
 end

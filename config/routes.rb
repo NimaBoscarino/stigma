@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get '/booksStatus', to: 'artists#booksStatus'
     end
 
+    resources :interactions, only: [:show]
     resources :followings
     resources :events, only: [:index, :destroy]
   end

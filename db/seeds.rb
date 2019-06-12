@@ -50,6 +50,9 @@ ApplicationInformation.create subject: 'I want a floral tattoo',
                               coverUp: false,
                               application: application
 
+application.reference_images.create url: 'https://i.pinimg.com/originals/24/b4/ac/24b4ac1a18eed9379d231bc06bb6a3a7.jpg'
+application.reference_images.create url: 'https://i0.wp.com/brightercraft.com/wp-content/uploads/2018/10/img_3829.jpg?w=800&ssl=1'
+
 # dwight_fearbear = Booking.create client: dwight, artist: fearbear # , text: 'Wow so cool tats pls'
 # jim_fearbear = Application.create client: jim, artist: fearbear # , text: 'I need tattoo of my wife'
 

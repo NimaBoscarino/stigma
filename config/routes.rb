@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     end
 
     resources :interactions, only: [:show]
+    get '/presignedURL', to: 'interactions#get_presigned_url'
+
     resources :followings
     resources :events, only: [:index, :destroy]
   end

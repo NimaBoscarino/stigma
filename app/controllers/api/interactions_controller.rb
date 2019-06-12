@@ -29,6 +29,7 @@ class Api::InteractionsController < ApplicationController
       placement = params['placement']
       consultation = params['consultation']
       coverUp = params['coverUp']
+      referencePhotos = params['referencePhotos']
 
       # Assuming there was no prior Interaction...
       application = Application.create client: current_user, artist: artist
@@ -38,6 +39,10 @@ class Api::InteractionsController < ApplicationController
                                     consultation: consultation,
                                     coverUp: coverUp,
                                     application: application
+
+      referencePhotos.each do |photo|
+        application.reference_images.create url: photo
+      end
 
       render :json => {
         message: 'Application created!'
@@ -58,7 +63,8 @@ class Api::InteractionsController < ApplicationController
         client: interaction.client,
         interaction: interaction,
         information: interaction.application_information,
-        type: 'Application'
+        type: 'Application',
+        images: interaction.reference_images
       }
 
     else
@@ -68,4 +74,15 @@ class Api::InteractionsController < ApplicationController
     end
   end
 
+  def get_presigned_url
+    presigned_url = S3_BUCKET.presigned_post(
+      key: "#{Rails.env}/#{SecureRandom.uuid}/${filename}",
+      success_action_status: '201',
+      signature_expiration: (Time.now.utc + 15.minutes)
+    )
+  
+    data = { url: presigned_url.url, url_fields: presigned_url.fields }
+  
+    render json: data, status: :ok  
+  end
 end

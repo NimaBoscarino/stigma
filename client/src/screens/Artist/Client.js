@@ -21,6 +21,7 @@ const ClientScreen = ({ interaction_id }) => {
         ...result.data.interaction,
         ...result.data.information,
         type: result.data.type,
+        images: result.data.images
       })
     };
 
@@ -37,6 +38,15 @@ const ClientScreen = ({ interaction_id }) => {
       <p>{interaction.placement}</p>
       <p>{interaction.coverUp && 'CoverUp'}</p>
       <p>{interaction.consultation && 'Consultation'}</p>
+      {
+        interaction.images.length && interaction.images.map(i => {
+          return (
+            <img src={i.url} key={i.id} style={{
+              height: '200px'
+            }}/>
+          )
+        })
+      }
     </div>
   )
 }

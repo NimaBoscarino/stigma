@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Modal, Form, Input, Switch, Upload, Icon } from 'antd';
 import axios from 'axios'
+import axiosHelpers from '../../utils/axios_helpers'
 
 const CreateInquiryForm = Form.create({ name: 'form_in_modal' })(
   // eslint-disable-next-line
@@ -97,7 +98,7 @@ class CreateApplicationModal extends React.Component {
     this.setState({ visible: false });
   };
 
-  handleCreate = () => {
+  handleCreate = async () => {
     const artist = this.props.artist
     const form = this.formRef.props.form;
     form.validateFields(async (err, values) => {
@@ -107,13 +108,26 @@ class CreateApplicationModal extends React.Component {
       console.log(artist)
       console.log('Received values of form: ', values);
       const { subject, description, placement, coverUp, consultation } = values
+
+      const presignedURL = await axios.get('/presignedURL')
+
+      const parser = new DOMParser();
+      const images = []
+      for (const photo of values.referencePhotos) {
+        const res = await axiosHelpers.uploadFileToS3(presignedURL.data, photo)
+        const parsed = parser.parseFromString(res.data,"text/xml"); 
+        const imageURL = parsed.getElementsByTagName('Location')[0].childNodes[0].nodeValue
+        images.push(imageURL)
+      }
+
       const result = await axios.post(
         `/artists/${artist.id}/interactions?type=application`, {
           subject,
           description,
           placement,
           coverUp,
-          consultation
+          consultation,
+          referencePhotos: images
         }, 
       );
 

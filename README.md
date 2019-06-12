@@ -15,7 +15,7 @@ Deployed on [Stigma.ink](http://www.stigma.ink)
 - [ ] "Application" Flow
 - [ ] "Invitation" Flow
 - [ ] Emails at milestones
-- [ ] Adding reference images
+- [x] Adding reference images
 - [ ] Appointment booking
 - [ ] Flash Events
 

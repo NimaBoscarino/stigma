@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Button } from 'antd'
+import api from '../../utils/api'
 
 // This page is where the artist can interface with the client, who may be at any stage of the Interaction
 
@@ -11,6 +13,9 @@ const ClientScreen = ({ interaction_id }) => {
 
   const [client, setClient] = useState(null)
   const [interaction, setInteraction] = useState(null)
+
+  const accept = () => api.acceptApplication(interaction_id)
+  const decline = () => api.declineApplication(interaction_id)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,6 +43,7 @@ const ClientScreen = ({ interaction_id }) => {
       <p>{interaction.placement}</p>
       <p>{interaction.coverUp && 'CoverUp'}</p>
       <p>{interaction.consultation && 'Consultation'}</p>
+      <p>{interaction.type}</p>
       {
         interaction.images.length && interaction.images.map(i => {
           return (
@@ -46,6 +52,14 @@ const ClientScreen = ({ interaction_id }) => {
             }}/>
           )
         })
+      }
+      {
+        interaction.type === 'Application' && (
+          <div>
+            <Button onClick={accept}>Accept</Button>
+            <Button onClick={decline}>Decline</Button>
+          </div>
+        )
       }
     </div>
   )

@@ -1,3 +1,3 @@
 class ReferenceImage < ApplicationRecord
-  belongs_to :interaction
+  belongs_to :tattoo_information
 end

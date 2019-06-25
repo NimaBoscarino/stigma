@@ -33,15 +33,16 @@ class Api::InteractionsController < ApplicationController
 
       # Assuming there was no prior Interaction...
       application = Application.create client: current_user, artist: artist
-      ApplicationInformation.create subject: subject,
+
+      job = TattooInformation.create subject: subject,
                                     description: description,
                                     placement: placement,
                                     consultation: consultation,
                                     coverUp: coverUp,
-                                    application: application
+                                    interaction: application
 
       referencePhotos.each do |photo|
-        application.reference_images.create url: photo
+        job.reference_images.create url: photo
       end
 
       render :json => {
@@ -62,9 +63,9 @@ class Api::InteractionsController < ApplicationController
       render :json => {
         client: interaction.client,
         interaction: interaction,
-        information: interaction.application_information,
+        information: interaction.tattoo_information,
         type: 'Application',
-        images: interaction.reference_images
+        images: interaction.tattoo_information.reference_images
       }
 
     else
@@ -84,5 +85,17 @@ class Api::InteractionsController < ApplicationController
     data = { url: presigned_url.url, url_fields: presigned_url.fields }
   
     render json: data, status: :ok  
+  end
+
+  def acceptApplication
+    render :json => {
+      message: 'accepted'
+    }
+  end
+
+  def declineApplication
+    render :json => {
+      message: 'declined'
+    }
   end
 end

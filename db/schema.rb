@@ -15,17 +15,6 @@ ActiveRecord::Schema.define(version: 2019_06_11_004954) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "application_informations", force: :cascade do |t|
-    t.integer "application_id"
-    t.string "subject"
-    t.string "description"
-    t.string "placement"
-    t.boolean "consultation"
-    t.boolean "coverUp"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "artist_informations", force: :cascade do |t|
     t.integer "artist_id"
     t.boolean "books_open"
@@ -62,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_06_11_004954) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type"
+    t.boolean "application_accepted"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -72,8 +62,19 @@ ActiveRecord::Schema.define(version: 2019_06_11_004954) do
   end
 
   create_table "reference_images", force: :cascade do |t|
-    t.integer "interaction_id"
+    t.integer "tattoo_information_id"
     t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tattoo_informations", force: :cascade do |t|
+    t.integer "interaction_id"
+    t.string "subject"
+    t.string "description"
+    t.string "placement"
+    t.boolean "consultation"
+    t.boolean "coverUp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

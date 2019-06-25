@@ -1,7 +1,7 @@
-class CreateApplicationInformations < ActiveRecord::Migration[5.2]
+class CreateTattooInformations < ActiveRecord::Migration[5.2]
   def change
-    create_table :application_informations do |t|
-      t.integer :application_id
+    create_table :tattoo_informations do |t|
+      t.integer :interaction_id
       t.string :subject
       t.string :description
       t.string :placement

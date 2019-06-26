@@ -9,12 +9,11 @@ class Artist < User
   has_one   :artist_information, dependent: :destroy
 
   def booked_clients
-    bookings.joins(:client)
-      .pluck(:name, :email)
-      .map { |name, email| {
-        name: name, email: email
+    bookings.joins(:client, :tattoo_information)
+      .pluck(:id, :name, :email, :subject, :description)
+      .map { |id, name, email, subject, description| {
+        id: id, name: name, email: email, subject: subject, description: description
       }}
-
   end
 
   def booked_clients2

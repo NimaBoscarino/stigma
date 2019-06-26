@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Table, Divider, Tag } from 'antd';
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 const columns = [
@@ -12,7 +13,26 @@ const columns = [
     title: 'Email',
     dataIndex: 'email',
     key: 'email',
-  }
+  },
+  {
+    title: 'Title',
+    dataIndex: 'subject',
+    key: 'subject',
+  },
+  {
+    title: 'Description',
+    dataIndex: 'description',
+    key: 'description',
+  },
+  {
+    title: 'Action',
+    key: 'action',
+    render: (text, client) => (
+      <span>
+        <Link to={`/clients/${client.id}`}>View</Link>
+      </span>
+    ),
+  },
 ];
 
 const ClientList = ({ user }) => {

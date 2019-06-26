@@ -113,11 +113,18 @@ class CreateApplicationModal extends React.Component {
 
       const parser = new DOMParser();
       const images = []
-      for (const photo of values.referencePhotos) {
-        const res = await axiosHelpers.uploadFileToS3(presignedURL.data, photo)
-        const parsed = parser.parseFromString(res.data,"text/xml"); 
-        const imageURL = parsed.getElementsByTagName('Location')[0].childNodes[0].nodeValue
-        images.push(imageURL)
+
+      // note, photos should be required...
+      
+      try {
+        for (const photo of values.referencePhotos) {
+          const res = await axiosHelpers.uploadFileToS3(presignedURL.data, photo)
+          const parsed = parser.parseFromString(res.data,"text/xml"); 
+          const imageURL = parsed.getElementsByTagName('Location')[0].childNodes[0].nodeValue
+          images.push(imageURL)
+        }
+      } catch (e) {
+        console.log('there was an error...')
       }
 
       const result = await axios.post(

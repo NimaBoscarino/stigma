@@ -67,7 +67,15 @@ class Api::InteractionsController < ApplicationController
         type: 'Application',
         images: interaction.tattoo_information.reference_images
       }
-
+    # Maybe I should always return the same stuff, but let the front end deal with it?
+    elsif interaction.type == 'Booking' # this isn't any different yet...
+      render :json => {
+        client: interaction.client,
+        interaction: interaction,
+        information: interaction.tattoo_information,
+        type: 'Booking',
+        images: interaction.tattoo_information.reference_images
+      }
     else
       render :json => {
         message: 'You cannot do that... yet!'
@@ -88,6 +96,11 @@ class Api::InteractionsController < ApplicationController
   end
 
   def acceptApplication
+    application = Application.find(params[:id])
+    application.application_accepted = true
+    application.type = 'Booking'
+    application.save
+
     render :json => {
       message: 'accepted'
     }

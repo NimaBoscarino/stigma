@@ -14,6 +14,8 @@ const ClientScreen = ({ interaction_id }) => {
   const [client, setClient] = useState(null)
   const [interaction, setInteraction] = useState(null)
 
+  // these should both trigger a notification or some other visual indicator
+  // if accepted, should render the view for "Booking"
   const accept = () => api.acceptApplication(interaction_id)
   const decline = () => api.declineApplication(interaction_id)
 

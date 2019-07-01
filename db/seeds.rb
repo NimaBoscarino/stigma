@@ -144,8 +144,6 @@ whizazaps.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/a8061b2
 whizazaps.photos.create url: 'https://instagram.fyvr3-1.fna.fbcdn.net/vp/f028abf8022e0dd74e223edaedaac93a/5D99C914/t51.2885-15/e35/61390923_138662523950333_7003645939359456046_n.jpg?_nc_ht=instagram.fyvr3-1.fna.fbcdn.net'
 
 fearbear.events.create name: 'Flash Event', date: 1.days.from_now
-fearbear.events.create name: 'Flash Event', date: 1.days.from_now
-fearbear.events.create name: 'Flash Event', date: 1.days.from_now
 fearbear.events.create name: 'Flash Event', date: 4.days.from_now
 fearbear.events.create name: 'Flash Event', date: 3.days.ago
 fearbear.events.create name: 'Flash Event', date: 10.days.from_now

@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Button, Descriptions, Icon, Card } from 'antd'
 import api from '../../utils/api'
-import PhotoMosaic from '../../components/PhotoMosaic';
-
+import InteractionTabsCard from '../../components/InteractionTabsCard'
 // This page is where the artist can interface with the client, who may be at any stage of the Interaction
 
 const ClientScreen = ({ interaction_id }) => {
@@ -42,32 +41,31 @@ const ClientScreen = ({ interaction_id }) => {
     <div style={{
       display: 'flex',
       flexDirection: 'row',
-      padding: '25px'
+      justifyContent: 'space-between',
     }}>
       <div style={{
-        width: '50%'
+        width: '50%',
+        padding: '10px'
       }}>
-      {
-        interaction.type === 'Application' && (
-          <div style={{
-            padding: '20px'
-          }}>
-            <Button type="primary" onClick={accept}>Accept</Button>
-            <Button type="danger" onClick={decline}>Decline</Button>
-          </div>
-        )
-      }
-      {
-        interaction.images && <PhotoMosaic cols={2} photos={interaction.images} />
-      }
+        {
+          interaction.type === 'Application' && (
+            <div style={{
+              padding: '20px'
+            }}>
+              <Button type="primary" onClick={accept}>Accept</Button>
+              <Button type="danger" onClick={decline}>Decline</Button>
+            </div>
+          )
+        }
+        <InteractionTabsCard interaction={interaction}/>
       </div>
       <div style={{
-        width: '50%'
+        width: '50%',
+        padding: '10px'
       }}>
         <Card style={{
-          margin: '10px'
+          margin: '0 0 10px 0'
         }}>
-
           <Descriptions title={interaction.type}>
             <Descriptions.Item label="Name">{client.name}</Descriptions.Item>
             <Descriptions.Item label="Description">{interaction.description}</Descriptions.Item>
@@ -85,7 +83,7 @@ const ClientScreen = ({ interaction_id }) => {
           </Descriptions>
         </Card>
         <Card style={{
-          margin: '10px'
+          margin: '0 0 10px 0'
         }}>
           <p>Chat</p>
         </Card>

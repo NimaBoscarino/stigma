@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from '../../components/Navbar'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Home from './Home'
 import ArtistProfile from './ArtistProfile'
+import InteractionsScreen from './Interactions';
 
 const ClientIndex = ({ user, logout, match }) => {
   return (
     <div>
       <Navbar user={user} logout={logout}/>
-      <Route exact path={`/`} component={() => <Home user={user}/>} />
-      <Route exact path={`/:id`} component={(props) => (
-        <ArtistProfile {...props} user={user}/>
-      )} />
+        <Switch>
+        <Route exact path={`/`} component={() => <Home user={user}/>} />
+        <Route exact path={`/interactions`} component={(props) => <InteractionsScreen user={user}/>} />
+        <Route exact path={`/:id`} component={(props) => (
+          <ArtistProfile {...props} user={user}/>
+        )} />
+      </Switch>        
     </div>
   )
 }

@@ -14,6 +14,10 @@ Rails.application.routes.draw do
       get '/booksStatus', to: 'artists#booksStatus'
     end
 
+    resources :clients do
+      resources :interactions, only: [:index]
+    end
+
     resources :interactions, only: [:show]
     get '/presignedURL', to: 'interactions#get_presigned_url'
     post '/interactions/:id/accept', to: 'interactions#acceptApplication'

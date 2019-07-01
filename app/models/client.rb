@@ -13,4 +13,12 @@ class Client < User
         name: eventName, date: date, id: id, artist: artistName
       }}
   end
+
+  def interactions_with_details
+    interactions.joins(:artist)
+    .pluck("name", "type")
+    .map { |name, type, id| {
+      artist: name, type: type, id: id
+    }}
+  end
 end

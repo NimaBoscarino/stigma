@@ -2,8 +2,8 @@ class Api::InteractionsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    artist = Artist.find_by(username: params['artist_id'])
-    interactions = artist.interactions
+    client = Client.find(params['client_id'])
+    interactions = client.interactions_with_details
 
     render :json => {
       interactions: interactions

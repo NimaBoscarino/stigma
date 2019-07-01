@@ -42,7 +42,7 @@ dwight.followings.create artist: zox
 # nima_fearbear = Inquiry.create client: nima, artist: fearbear
 # nima_inquiry = InquiryInformation.create subject: 'Do you do faces?', text: "I like ur tats, I want one on face. do you do? thx", inquiry: nima_fearbear
 
-application = Application.create client: nima, artist: fearbear
+application = Application.create client: dwight, artist: fearbear
 tattoo_job = TattooInformation.create ({
   subject: 'I want a floral tattoo',
   description: 'Lots of sunflowers',
@@ -55,8 +55,18 @@ tattoo_job = TattooInformation.create ({
 tattoo_job.reference_images.create url: 'https://i.pinimg.com/originals/24/b4/ac/24b4ac1a18eed9379d231bc06bb6a3a7.jpg'
 tattoo_job.reference_images.create url: 'https://i0.wp.com/brightercraft.com/wp-content/uploads/2018/10/img_3829.jpg?w=800&ssl=1'
 
-# dwight_fearbear = Booking.create client: dwight, artist: fearbear # , text: 'Wow so cool tats pls'
-# jim_fearbear = Application.create client: jim, artist: fearbear # , text: 'I need tattoo of my wife'
+application = Booking.create client: nima, artist: fearbear
+tattoo_job = TattooInformation.create ({
+  subject: 'Pretty butterflies',
+  description: 'Butterflies leaving a jar',
+  placement: 'on my chest',
+  consultation: false,
+  coverUp: true,
+  interaction: application
+})
+
+tattoo_job.reference_images.create url: 'https://i.pinimg.com/originals/24/b4/ac/24b4ac1a18eed9379d231bc06bb6a3a7.jpg'
+tattoo_job.reference_images.create url: 'https://i0.wp.com/brightercraft.com/wp-content/uploads/2018/10/img_3829.jpg?w=800&ssl=1'
 
 fearbear.photos.create url: 'https://static.wixstatic.com/media/1faa96_b40cb25c226c4cdc93a6b3c6595b836b~mv2.jpg/v1/fill/w_549,h_686,al_c,q_90,usm_0.66_1.00_0.01/1faa96_b40cb25c226c4cdc93a6b3c6595b836b~mv2.webp'
 

@@ -2,31 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card } from 'antd';
 import ArtistCalendar from './ArtistCalendar';
-import styled from 'styled-components'
-
-const PhotosContainer = styled.div`
-  line-height: 0;
-  
-  -webkit-column-count: 4;
-  -webkit-column-gap:   0px;
-  -moz-column-count:    4;
-  -moz-column-gap:      0px;
-  column-count:         4;
-  column-gap:           0px;  
-
-  & img {
-    /* Just in case there are inline attributes */
-    width: 100% !important;
-    height: auto !important;
-    padding: 3px;
-  }
-`
-
-const Photo = ({src}) => {
-  return (<img style={{
-    width: '300px'
-  }} alt={src} src={src} />)
-}
+import PhotoMosaic from './PhotoMosaic'
 
 const PhotoList = ({artist}) => {
   const [photos, setPhotos] = useState([]);
@@ -41,11 +17,7 @@ const PhotoList = ({artist}) => {
   }, []);
 
   return (
-    <PhotosContainer>
-      {
-        photos.map(p => <Photo key={p.id} src={p.url} />)
-      }
-    </PhotosContainer>
+    <PhotoMosaic photos={photos} />
   )
 }
 

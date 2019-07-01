@@ -8,10 +8,18 @@ class Api::FollowingsController < ApplicationController
         message: 'Artists cannot follow users --- yet!'
       }  
     else 
-      followed_artists = current_user.followed_artists
+      artists = current_user.followed_artists
 
+      artists = artists.map do |a|
+        artist = {
+          details: a,
+          followed: true,
+          books_open: a.books_open?
+        }
+      end
+      
       render :json => {
-        followings: followed_artists
+        artists: artists
       }
     end
   end

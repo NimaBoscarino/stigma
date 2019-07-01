@@ -93,6 +93,18 @@ const Navbar = ({ user, logout }) => {
             </div>
           )
         }
+        {
+          user.type === 'Client' && (
+            <div style={{
+              display: 'flex',
+              flexDirection: 'row'
+            }}>
+              <NavButton to={'/favourites'}>Favourites</NavButton>
+              <NavButton to={'/events'}>Events</NavButton>
+              <NavButton to={'/interactions'}>Interactions</NavButton>
+            </div>
+          )
+        }
         <div style={{
           display: 'flex',
           flexDirection: 'row',

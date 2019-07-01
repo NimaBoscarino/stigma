@@ -84,6 +84,11 @@ const ClientScreen = ({ interaction_id }) => {
             </Descriptions.Item>
           </Descriptions>
         </Card>
+        <Card style={{
+          margin: '10px'
+        }}>
+          <p>Chat</p>
+        </Card>
       </div>
     </div>
   )

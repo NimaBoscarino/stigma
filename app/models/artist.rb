@@ -3,6 +3,7 @@ class Artist < User
   has_many  :inquiries
   has_many  :bookings
   has_many  :applications
+  has_many  :appointments
   has_many  :photos, dependent: :destroy
   has_many  :events, dependent: :destroy
   has_many  :clients, through: :interactions

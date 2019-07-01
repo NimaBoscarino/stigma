@@ -1,5 +1,6 @@
 class Client < User
   has_many :interactions
+  has_many :appointments
   has_many :inquiries
   has_many :followings, dependent: :destroy
   has_many :followed_artists, through: :followings, :source => :artist

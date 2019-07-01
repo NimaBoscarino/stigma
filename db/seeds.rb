@@ -68,6 +68,9 @@ tattoo_job = TattooInformation.create ({
 tattoo_job.reference_images.create url: 'https://i.pinimg.com/originals/24/b4/ac/24b4ac1a18eed9379d231bc06bb6a3a7.jpg'
 tattoo_job.reference_images.create url: 'https://i0.wp.com/brightercraft.com/wp-content/uploads/2018/10/img_3829.jpg?w=800&ssl=1'
 
+application.appointments.create date: 4.days.from_now, name: '1st session', description: 'outlines and stuff', client: application.client, artist: application.artist
+application.appointments.create date: 10.days.from_now, name: '2nd session', description: 'colours! bring something to eat', client: application.client, artist: application.artist
+
 fearbear.photos.create url: 'https://static.wixstatic.com/media/1faa96_b40cb25c226c4cdc93a6b3c6595b836b~mv2.jpg/v1/fill/w_549,h_686,al_c,q_90,usm_0.66_1.00_0.01/1faa96_b40cb25c226c4cdc93a6b3c6595b836b~mv2.webp'
 
 fearbear.photos.create url: 'https://static.wixstatic.com/media/1faa96_22d0040c498a4e44ad5f73b2354a1963~mv2.jpg/v1/fill/w_686,h_686,al_c,q_90,usm_0.66_1.00_0.01/1faa96_22d0040c498a4e44ad5f73b2354a1963~mv2.webp'

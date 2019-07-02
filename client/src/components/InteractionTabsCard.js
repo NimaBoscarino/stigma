@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Card } from 'antd';
 import ReferenceImages from './ReferenceImages'
 import InteractionCalendar from './InteractionCalendar'
@@ -18,7 +18,7 @@ const InteractionTabsCard = ({ interaction }) => {
   const [key, setKey] = useState('tab1')
   const contentList = {
     tab1: <ReferenceImages photos={interaction.images || []} />,
-    tab2: <InteractionCalendar />,
+    tab2: <InteractionCalendar interaction={interaction}/>,
   }
   
   const onTabChange = (key, type) => {

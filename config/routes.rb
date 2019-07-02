@@ -18,7 +18,10 @@ Rails.application.routes.draw do
       resources :interactions, only: [:index]
     end
 
-    resources :interactions, only: [:show]
+    resources :interactions, only: [:show] do
+      get '/appointments', to: 'interactions#appointments'
+    end
+
     get '/presignedURL', to: 'interactions#get_presigned_url'
     post '/interactions/:id/accept', to: 'interactions#acceptApplication'
     post '/interactions/:id/decline', to: 'interactions#declineApplication'

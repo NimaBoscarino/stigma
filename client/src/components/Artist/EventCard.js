@@ -12,7 +12,7 @@ const EventCard = ({event, onDelete}) => {
   return (
     <Card size="small" title={event.name} style={{
       width: '30%',
-      marginBottom: '5px'
+      margin: '5px'
     }}>
       <p>{moment(event.date).format('DD-MM-YYYY')}</p>
       <Button 

@@ -44,6 +44,10 @@ const HomeScreen = ({ user }) => {
       }}>
         <ArtistProfileBanner user={user} addEvent={addEvent} />
         <h2>{date && `Events for: ${date.format('YYYY-MM-DD')}`}</h2>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'row'
+        }}>
         {
           selectedDayEvents.map(e => (
             <EventCard
@@ -53,6 +57,7 @@ const HomeScreen = ({ user }) => {
             />
           ))
         }
+        </div>
       </div>
       <div style={{
         width: '50%'

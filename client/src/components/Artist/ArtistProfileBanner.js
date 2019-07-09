@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Tag, Switch } from 'antd'
 import styled from 'styled-components'
+import CreateFlashEventModal from './CreateFlashEventModal'
 
 const BooksTag = styled(Tag)`
   margin: 5px;
@@ -15,7 +16,7 @@ const InstagramHandle = styled.h3`
   font-style: italic;
 `
 
-const ArtistProfileBanner = ({ user }) => {
+const ArtistProfileBanner = ({ user, addEvent }) => {
   const [booksOpen, setBooksOpen] = useState(null)
   const [artist, setArtist] = useState(null)
 
@@ -72,10 +73,23 @@ const ArtistProfileBanner = ({ user }) => {
         <InstagramHandle>@{artist.username}</InstagramHandle>
       </div>
       <div style={{
-        margin: '15px'
+        margin: '15px',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
       }}>
-        <h2>Books open?</h2>
-        <Switch loading={booksOpen === null} checked={booksOpen} onChange={onChange} />
+        <Switch
+          checkedChildren={"Books Open"}
+          unCheckedChildren={"Books Closed"}
+          loading={booksOpen === null}
+          checked={booksOpen}
+          onChange={onChange}
+        />
+        <CreateFlashEventModal
+          user={user}
+          addEvent={addEvent}
+        />
       </div>
     </div>    
   )

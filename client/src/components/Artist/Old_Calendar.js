@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Calendar, Badge, Card, Button } from 'antd';
-import CreateFlashEventModal from '../../components/Artist/CreateFlashEventModal'
+import CreateFlashEventModal from './CreateFlashEventModal'
 import moment from 'moment';
 
 const EventCard = ({event, onDelete}) => {
@@ -26,7 +26,7 @@ const EventCard = ({event, onDelete}) => {
   )
 }
 
-const CalendarScreen = ({ user }) => {
+const ArtistCalendar = ({ user }) => {
   const [date, setDate] = useState(moment());
   const [events, setEvents] = useState([]);
 
@@ -105,4 +105,4 @@ const CalendarScreen = ({ user }) => {
   )
 }
 
-export default CalendarScreen
+export default ArtistCalendar

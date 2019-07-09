@@ -89,7 +89,6 @@ const Navbar = ({ user, logout }) => {
               <NavButton to={'/clients'}>Clients</NavButton>
               <NavButton to={'/applications'}>Applications</NavButton>
               <NavButton to={'/questions'}>Questions</NavButton>
-              <NavButton to={'/calendar'}>Calendar</NavButton>
             </div>
           )
         }

@@ -6,6 +6,10 @@ class Api::EventsController < ApplicationController
       artist = Artist.find_by(username: params['artist_id'])
       events = artist.events
 
+      if params['appointments']
+        events = events + artist.appointments
+      end
+      
       render :json => {
         events: events
       }

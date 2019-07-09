@@ -12,7 +12,7 @@ const HomeScreen = ({ user }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(`/artists/${user.username}/events`);
+      const result = await axios.get(`/artists/${user.username}/events?appointments=true`);
       setEvents(result.data.events);
     };
 

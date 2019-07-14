@@ -17,9 +17,9 @@ const columns = [
   {
     title: 'Action',
     key: 'action',
-    render: (text, client) => (
+    render: (text, interaction) => (
       <span>
-        <Link to={`#`}>View</Link>
+        <Link to={`/interactions/${interaction.id}`}>View</Link>
       </span>
     ),
   },

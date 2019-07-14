@@ -17,7 +17,7 @@ class Client < User
 
   def interactions_with_details
     interactions.joins(:artist)
-    .pluck("name", "type")
+    .pluck("name", "type", "id")
     .map { |name, type, id| {
       artist: name, type: type, id: id
     }}

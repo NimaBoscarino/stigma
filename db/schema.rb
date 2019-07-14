@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_01_215824) do
+ActiveRecord::Schema.define(version: 2019_07_14_191814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 2019_07_01_215824) do
   create_table "artist_informations", force: :cascade do |t|
     t.integer "artist_id"
     t.boolean "books_open"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.string "title"
+    t.integer "artist_id"
+    t.integer "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -63,6 +71,15 @@ ActiveRecord::Schema.define(version: 2019_07_01_215824) do
     t.datetime "updated_at", null: false
     t.string "type"
     t.boolean "application_accepted"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "text"
+    t.bigint "conversation_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -123,4 +140,5 @@ ActiveRecord::Schema.define(version: 2019_07_01_215824) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "messages", "conversations"
 end

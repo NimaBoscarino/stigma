@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
 
+  has_many :messages
+  has_many :conversations
+
   def as_json(options={})
     super(options).merge({
       type: type,

@@ -28,8 +28,14 @@ Rails.application.routes.draw do
 
     resources :followings
     resources :events, only: [:index, :destroy]
+    
+    resources :conversations, only: [:index, :create, :show]
+    resources :messages, only: [:create]
   end
-  
+
+
+  mount ActionCable.server => '/cable'
+
   get '*path', to: "static_pages#fallback_index_html", constraints: ->(request) do
     !request.xhr? && request.format.html?
   end

@@ -2,7 +2,8 @@ class Interaction < ApplicationRecord
   belongs_to :client
   belongs_to :artist
 
-  has_one :tattoo_information
+  has_one :tattoo_information, dependent: :destroy
+  has_one :conversation, dependent: :destroy
   has_many :appointments, dependent: :destroy
 
   scope :booked, -> { where(type: 'Booking') }

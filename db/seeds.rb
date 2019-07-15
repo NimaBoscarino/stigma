@@ -52,6 +52,12 @@ tattoo_job = TattooInformation.create ({
   interaction: application
 })
 
+conversation = Conversation.create(
+  interaction: application,
+  artist: application.artist,
+  client: application.client
+)
+
 tattoo_job.reference_images.create url: 'https://i.pinimg.com/originals/24/b4/ac/24b4ac1a18eed9379d231bc06bb6a3a7.jpg'
 tattoo_job.reference_images.create url: 'https://i0.wp.com/brightercraft.com/wp-content/uploads/2018/10/img_3829.jpg?w=800&ssl=1'
 
@@ -64,6 +70,12 @@ tattoo_job = TattooInformation.create ({
   coverUp: true,
   interaction: application
 })
+
+conversation = Conversation.create(
+  interaction: application,
+  artist: application.artist,
+  client: application.client
+)
 
 tattoo_job.reference_images.create url: 'https://i.pinimg.com/originals/24/b4/ac/24b4ac1a18eed9379d231bc06bb6a3a7.jpg'
 tattoo_job.reference_images.create url: 'https://i0.wp.com/brightercraft.com/wp-content/uploads/2018/10/img_3829.jpg?w=800&ssl=1'
@@ -81,6 +93,12 @@ tattoo_job = TattooInformation.create ({
   coverUp: false,
   interaction: application
 })
+
+conversation = Conversation.create(
+  interaction: application,
+  artist: application.artist,
+  client: application.client
+)
 
 tattoo_job.reference_images.create url: 'https://i.pinimg.com/originals/24/b4/ac/24b4ac1a18eed9379d231bc06bb6a3a7.jpg'
 tattoo_job.reference_images.create url: 'https://i0.wp.com/brightercraft.com/wp-content/uploads/2018/10/img_3829.jpg?w=800&ssl=1'

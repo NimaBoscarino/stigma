@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Button, Descriptions, Icon, Card } from 'antd'
 import api from '../../utils/api'
 import InteractionTabsCard from '../../components/InteractionTabsCard'
+import Chat from '../../components/Chat'
 // This page is where the client can interface with the artist. We may be at any stage of the Interaction
 
 const InteractionScreen = ({ interaction_id }) => {
@@ -23,7 +24,8 @@ const InteractionScreen = ({ interaction_id }) => {
         ...result.data.interaction,
         ...result.data.information,
         type: result.data.type,
-        images: result.data.images
+        images: result.data.images,
+        conversation: result.data.conversation
       })
     };
 
@@ -67,11 +69,7 @@ const InteractionScreen = ({ interaction_id }) => {
             </Descriptions.Item>
           </Descriptions>
         </Card>
-        <Card style={{
-          margin: '0 0 10px 0'
-        }}>
-          <p>Chat</p>
-        </Card>
+        <Chat conversation={interaction.conversation}/>
       </div>
     </div>
   )

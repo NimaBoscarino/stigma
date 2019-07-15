@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2019_07_14_191814) do
 
   create_table "conversations", force: :cascade do |t|
     t.string "title"
+    t.integer "interaction_id"
     t.integer "artist_id"
     t.integer "client_id"
     t.datetime "created_at", null: false

@@ -45,6 +45,12 @@ class Api::InteractionsController < ApplicationController
         job.reference_images.create url: photo
       end
 
+      conversation = Conversation.create(
+        interaction: application,
+        artist: application.artist,
+        client: application.client
+      )      
+
       render :json => {
         message: 'Application created!'
       }
@@ -65,7 +71,8 @@ class Api::InteractionsController < ApplicationController
         interaction: interaction,
         information: interaction.tattoo_information,
         type: 'Application',
-        images: interaction.tattoo_information.reference_images
+        images: interaction.tattoo_information.reference_images,
+        conversation: interaction.conversation
       }
     # Maybe I should always return the same stuff, but let the front end deal with it?
     elsif interaction.type == 'Booking' # this isn't any different yet...
@@ -74,7 +81,8 @@ class Api::InteractionsController < ApplicationController
         interaction: interaction,
         information: interaction.tattoo_information,
         type: 'Booking',
-        images: interaction.tattoo_information.reference_images
+        images: interaction.tattoo_information.reference_images,
+        conversation: interaction.conversation
       }
     else
       render :json => {

@@ -1,61 +1,82 @@
 // src/components/ConversationsList.js
 
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import  ActionCable  from 'actioncable';
 import axios from 'axios'
 import NewMessageForm from './NewMessageForm';
+import ChatMessage from './ChatMessage'
 
-const ChatList = ({ conversation }) => {
+let WS_ROUTE = process.env.NODE_ENV === 'development' ? 'ws://localhost:3001' : 'ws://' + window.location.host
 
-  const [messages, setMessages] = useState([])
-
-  const cable = ActionCable.createConsumer('ws://localhost:3001/cable');
-
-  const handleReceivedMessage = message => {
-    // const conversations = [...this.state.conversations];
-    const newMessages = [...messages, message];
-    setMessages(newMessages);
-  };
+const MessageList = ({ messages }) => {
+  const dummyDiv = useRef(null);
 
   useEffect(() => {
-      conversation && cable.subscriptions.create(
-      {
-        channel: "MessagesChannel",
-        conversation: conversation.id
-      },
-      {
-        received: handleReceivedMessage
-      }
-    );
-  }, [conversation])
-
-  const orderedMessages = messages => {
-    const sortedMessages = messages.sort(
-      (a, b) => new Date(a.created_at) - new Date(b.created_at)
-    );
-    return sortedMessages.map(message => {
-      return <li key={message.id}>{message.text}</li>;
-    });
-  };  
-
-  useEffect(() => {
-    const fetchData = async () => {
-      if (conversation) {
-        const result = await axios.get(`/conversations/${conversation.id}`)
-        setMessages(result.data)
-      }
-    };
-
-    fetchData();
-  });
+    console.log(dummyDiv)
+    dummyDiv.current.scrollIntoView({ behavior: "smooth" });
+  }, [messages])
 
   return (
-    <div className="conversationsList">
-      <NewMessageForm conversation_id={conversation && conversation.id} />    
-      <h2>Messages</h2>
-      <ul>{orderedMessages(messages)}</ul>
+    <div style={{
+      height: '400px',
+      overflow: 'scroll'
+    }}>
+      {
+        messages.map(message => <ChatMessage key={message.id}>{message.text}</ChatMessage>)
+      }
+      <div
+        ref={dummyDiv}
+      ></div>
     </div>
   )
+}
+
+class ChatList extends React.Component {
+
+  state = {
+    messages: []
+  }
+
+  async componentDidMount() {
+    if (this.props.conversation) {
+      const result = await axios.get(`/conversations/${this.props.conversation.id}`)
+      this.setState({
+        messages: result.data
+      })
+    }
+
+    const cable = ActionCable.createConsumer(WS_ROUTE + '/cable');
+
+    cable.subscriptions.create(
+      {
+        channel: "MessagesChannel",
+        conversation: this.props.conversation.id
+      },
+      {
+        received: this.handleReceivedMessage
+      }
+    );
+  }
+  
+  
+  handleReceivedMessage = message => {
+    const newMessages = [...this.state.messages, message];
+    this.setState({
+      messages: newMessages
+    })
+  }
+
+  render() {
+    return (
+      <div className="conversationsList">
+        <h2 onClick={this.handleReceivedMessage}>Messages</h2>
+      
+        <MessageList messages={this.state.messages}/>
+        <NewMessageForm conversation_id={this.props.conversation.id} />    
+      </div>
+    )
+  }
+ 
 }
 
 export default ChatList

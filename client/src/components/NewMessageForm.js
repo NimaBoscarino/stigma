@@ -7,10 +7,6 @@ class NewMessageForm extends React.Component {
     conversation_id: this.props.conversation_id,
   };
 
-  componentWillReceiveProps = nextProps => {
-    this.setState({ conversation_id: nextProps.conversation_id });
-  };
-
   handleChange = e => {
     this.setState({ text: e.target.value });
   };
@@ -19,7 +15,8 @@ class NewMessageForm extends React.Component {
     e.preventDefault();
 
     axios.post(`/messages`, {
-      ...this.state
+      ...this.state,
+      conversation_id: this.props.conversation_id
     });
     this.setState({ text: '' });
   };
@@ -28,9 +25,10 @@ class NewMessageForm extends React.Component {
     return (
       <div className="newMessageForm">
         <form onSubmit={this.handleSubmit}>
-          <label>New Message:</label>
-          <br />
           <input
+            style={{
+              width: '90%'
+            }}
             type="text"
             value={this.state.text}
             onChange={this.handleChange}

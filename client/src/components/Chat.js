@@ -7,9 +7,8 @@ const Chat = ({conversation}) => {
     <Card style={{
       margin: '0 0 10px 0'
     }}>
-      <p>Chat</p>
       {
-        conversation && <ConversationsList conversation={conversation}/>
+        conversation.id && <ConversationsList conversation={conversation}/>
       }
     </Card>
   )

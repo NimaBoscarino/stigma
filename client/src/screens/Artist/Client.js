@@ -26,7 +26,6 @@ const ClientScreen = ({ interaction_id }) => {
 
       setClient(result.data.client)
 
-      console.log('RESULT', result.data)
       setInteraction({
         ...result.data.interaction,
         ...result.data.information,

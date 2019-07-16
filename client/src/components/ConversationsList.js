@@ -8,11 +8,10 @@ import ChatMessage from './ChatMessage'
 
 let WS_ROUTE = process.env.NODE_ENV === 'development' ? 'ws://localhost:3001' : 'ws://' + window.location.host
 
-const MessageList = ({ messages }) => {
+const MessageList = ({ messages, user }) => {
   const dummyDiv = useRef(null);
 
   useEffect(() => {
-    console.log(dummyDiv)
     dummyDiv.current.scrollIntoView({ behavior: "smooth" });
   }, [messages])
 
@@ -22,7 +21,7 @@ const MessageList = ({ messages }) => {
       overflow: 'scroll'
     }}>
       {
-        messages.map(message => <ChatMessage key={message.id}>{message.text}</ChatMessage>)
+        messages.map(message => <ChatMessage user_id={user.id} key={message.id}>{message}</ChatMessage>)
       }
       <div
         ref={dummyDiv}
@@ -71,7 +70,7 @@ class ChatList extends React.Component {
       <div className="conversationsList">
         <h2 onClick={this.handleReceivedMessage}>Messages</h2>
       
-        <MessageList messages={this.state.messages}/>
+        <MessageList user={this.props.user} messages={this.state.messages}/>
         <NewMessageForm conversation_id={this.props.conversation.id} />    
       </div>
     )

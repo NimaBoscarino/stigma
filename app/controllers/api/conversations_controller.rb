@@ -6,7 +6,10 @@ class Api::ConversationsController < ApplicationController
 
   def show
     messages = Conversation.find(params['id']).messages
-    render json: messages
+    # This should happen in a serializer
+    render json: messages.map { |m| {
+      message: m
+    }}
   end
 
   def create

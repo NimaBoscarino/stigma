@@ -6,7 +6,7 @@ import InteractionTabsCard from '../../components/InteractionTabsCard'
 import Chat from '../../components/Chat'
 // This page is where the artist can interface with the client, who may be at any stage of the Interaction
 
-const ClientScreen = ({ interaction_id }) => {
+const ClientScreen = ({ interaction_id, user }) => {
 
   // use interaction_id to get the interaction
   // i realize I'd made this call before... 
@@ -86,7 +86,7 @@ const ClientScreen = ({ interaction_id }) => {
           </Descriptions>
         </Card>
 
-        <Chat conversation={interaction.conversation}/>
+        <Chat user={user} conversation={interaction.conversation}/>
       </div>
     </div>
   )

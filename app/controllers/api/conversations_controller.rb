@@ -5,11 +5,15 @@ class Api::ConversationsController < ApplicationController
   end
 
   def show
-    messages = Conversation.find(params['id']).messages
+    c = Conversation.find(params['id'])
+    messages = c.messages
     # This should happen in a serializer
-    render json: messages.map { |m| {
-      message: m
-    }}
+    render json: {
+      locked: c.locked,
+      messages: messages.map { |m| {
+        message: m
+      }}
+    }
   end
 
   def create

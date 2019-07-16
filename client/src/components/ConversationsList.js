@@ -40,7 +40,8 @@ class ChatList extends React.Component {
     if (this.props.conversation) {
       const result = await axios.get(`/conversations/${this.props.conversation.id}`)
       this.setState({
-        messages: result.data
+        messages: result.data.messages,
+        locked: result.data.locked
       })
     }
 
@@ -69,9 +70,19 @@ class ChatList extends React.Component {
     return (
       <div className="conversationsList">
         <h2 onClick={this.handleReceivedMessage}>Messages</h2>
-      
-        <MessageList user={this.props.user} messages={this.state.messages}/>
-        <NewMessageForm conversation_id={this.props.conversation.id} />    
+        {
+          this.state.locked ? (
+            <>
+              <p>Locked!</p>
+              <p>Application must be accepted to unlock chat.</p>
+            </>
+          ) : (
+            <>
+            <MessageList user={this.props.user} messages={this.state.messages}/>
+            <NewMessageForm conversation_id={this.props.conversation.id} />    
+            </>    
+          )
+        }
       </div>
     )
   }

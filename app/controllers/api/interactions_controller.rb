@@ -107,6 +107,8 @@ class Api::InteractionsController < ApplicationController
     application = Application.find(params[:id])
     application.application_accepted = true
     application.type = 'Booking'
+    application.conversation.locked = false
+    application.conversation.save
     application.save
 
     render :json => {
@@ -115,6 +117,7 @@ class Api::InteractionsController < ApplicationController
   end
 
   def declineApplication
+    # to do!
     render :json => {
       message: 'declined'
     }

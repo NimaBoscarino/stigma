@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_07_14_191814) do
     t.integer "interaction_id"
     t.integer "artist_id"
     t.integer "client_id"
+    t.boolean "locked"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

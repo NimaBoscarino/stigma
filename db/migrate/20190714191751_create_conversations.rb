@@ -5,6 +5,7 @@ class CreateConversations < ActiveRecord::Migration[5.2]
       t.integer :interaction_id
       t.integer :artist_id
       t.integer :client_id
+      t.boolean :locked
       t.timestamps
     end
   end

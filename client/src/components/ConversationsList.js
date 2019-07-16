@@ -1,7 +1,7 @@
 // src/components/ConversationsList.js
 
 import React, { useState, useEffect } from 'react';
-import { ActionCable } from 'react-actioncable-provider';
+import  ActionCable  from 'actioncable';
 import axios from 'axios'
 import NewMessageForm from './NewMessageForm';
 
@@ -9,17 +9,30 @@ const ChatList = ({ conversation }) => {
 
   const [messages, setMessages] = useState([])
 
+  const cable = ActionCable.createConsumer('ws://localhost:3001/cable');
+
   const handleReceivedMessage = message => {
     // const conversations = [...this.state.conversations];
     const newMessages = [...messages, message];
     setMessages(newMessages);
   };
 
+  useEffect(() => {
+      conversation && cable.subscriptions.create(
+      {
+        channel: "MessagesChannel",
+        conversation: conversation.id
+      },
+      {
+        received: handleReceivedMessage
+      }
+    );
+  }, [conversation])
+
   const orderedMessages = messages => {
     const sortedMessages = messages.sort(
       (a, b) => new Date(a.created_at) - new Date(b.created_at)
     );
-    console.log('messages', messages)
     return sortedMessages.map(message => {
       return <li key={message.id}>{message.text}</li>;
     });
@@ -34,18 +47,14 @@ const ChatList = ({ conversation }) => {
     };
 
     fetchData();
-  }, [conversation]);
+  });
 
   return (
-      <div className="conversationsList">
-        <NewMessageForm conversation_id={conversation && conversation.id} />
-        <ActionCable
-          channel={{ channel: 'MessagesChannel', conversation: conversation && conversation.id }}
-          onReceived={handleReceivedMessage}
-        />        
-        <h2>Messages</h2>
-        <ul>{orderedMessages(messages)}</ul>
-      </div>    
+    <div className="conversationsList">
+      <NewMessageForm conversation_id={conversation && conversation.id} />    
+      <h2>Messages</h2>
+      <ul>{orderedMessages(messages)}</ul>
+    </div>
   )
 }
 

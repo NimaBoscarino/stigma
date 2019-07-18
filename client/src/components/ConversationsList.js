@@ -41,7 +41,6 @@ class ChatList extends React.Component {
       const result = await axios.get(`/conversations/${this.props.conversation.id}`)
       this.setState({
         messages: result.data.messages,
-        locked: result.data.locked
       })
     }
 
@@ -71,7 +70,7 @@ class ChatList extends React.Component {
       <div className="conversationsList">
         <h2 onClick={this.handleReceivedMessage}>Messages</h2>
         {
-          this.state.locked ? (
+          this.props.conversation.locked ? (
             <>
               <p>Locked!</p>
               <p>Application must be accepted to unlock chat.</p>

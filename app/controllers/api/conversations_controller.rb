@@ -9,7 +9,6 @@ class Api::ConversationsController < ApplicationController
     messages = c.messages
     # This should happen in a serializer
     render json: {
-      locked: c.locked,
       messages: messages.map { |m| {
         message: m
       }}

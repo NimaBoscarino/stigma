@@ -45,8 +45,8 @@ const App = (props) => {
 
           <PrivateRoute path="/" user={user} render={(props) => {
             return user.type === 'Artist' ? 
-              <ArtistView {...props} logout={logout} user={user}/> :
-              <ClientView {...props} logout={logout} user={user}/>
+              <ArtistView logout={logout} user={user}/> :
+              <ClientView logout={logout} user={user}/>
           }}/>
         </Switch>
       </Router>

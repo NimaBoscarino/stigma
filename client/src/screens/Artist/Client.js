@@ -17,24 +17,28 @@ const ClientScreen = ({ interaction_id, user }) => {
 
   // these should both trigger a notification or some other visual indicator
   // if accepted, should render the view for "Booking"
-  const accept = () => api.acceptApplication(interaction_id)
+  const accept = async () => {
+    await api.acceptApplication(interaction_id)
+    await fetchData()
+  }
   const decline = () => api.declineApplication(interaction_id)
 
+  const fetchData = async () => {
+    const result = await axios.get(`/interactions/${interaction_id}`)
+
+    setClient(result.data.client)
+
+    setInteraction({
+      ...result.data.interaction,
+      ...result.data.information,
+      type: result.data.type,
+      images: result.data.images,
+      conversation: result.data.conversation
+    })
+
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get(`/interactions/${interaction_id}`)
-
-      setClient(result.data.client)
-
-      setInteraction({
-        ...result.data.interaction,
-        ...result.data.information,
-        type: result.data.type,
-        images: result.data.images,
-        conversation: result.data.conversation
-      })
-    };
-
     fetchData();
   }, []);
 

@@ -48,7 +48,8 @@ class Api::InteractionsController < ApplicationController
       conversation = Conversation.create(
         interaction: application,
         artist: application.artist,
-        client: application.client
+        client: application.client,
+        locked: true        
       )      
 
       render :json => {

@@ -10,7 +10,9 @@ const ChatMessage = ({children, user_id}) => {
       justifyContent: isSender ? 'flex-end' : 'flex-start'
     }}>
       <div style={{
-        background: isSender ? 'blue' : 'lightblue',
+        background: isSender ? 'black' : 'white',
+        color: isSender ? 'white' : 'black',
+        border: 'solid 1px black',
         width: '60%',
         borderRadius: '5px',
         padding: '10px',

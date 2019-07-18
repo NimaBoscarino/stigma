@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
 
     resources :interactions, only: [:show] do
-      get '/appointments', to: 'interactions#appointments'
+      resources :appointments
     end
 
     get '/presignedURL', to: 'interactions#get_presigned_url'

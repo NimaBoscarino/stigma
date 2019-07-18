@@ -64,7 +64,7 @@ const ClientScreen = ({ interaction_id, user }) => {
             </div>
           )
         }
-        <InteractionTabsCard interaction={interaction}/>
+        <InteractionTabsCard artist={true} interaction={interaction}/>
       </div>
       <div style={{
         width: '50%',

@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Calendar, Badge } from 'antd'
 import axios from 'axios'
 import moment from 'moment';
+import CreateAppointmentInviteModal from './Artist/CreateAppointmentInviteModal';
 
-const InteractionCalendar = ({ interaction }) => {
+const InteractionCalendar = ({ interaction, artist }) => {
   /*
     This calendar is used to:
     1. see upcoming appointments
@@ -21,6 +22,10 @@ const InteractionCalendar = ({ interaction }) => {
     fetchData();
   }, []);
 
+  const addAppointment = (appointment) => {
+    setAppointments([...appointments, appointment])
+  }
+
   const eventsForDay = (value) => {
     return appointments.filter(e => value.format('DD-MM-YYYY') === moment(e.date).format('DD-MM-YYYY'));
   }
@@ -36,9 +41,19 @@ const InteractionCalendar = ({ interaction }) => {
   }
 
   return (
-    <Calendar
-      dateCellRender={dateCellRender}
-    />
+    <div>
+      {
+        artist && (
+          <CreateAppointmentInviteModal
+            addAppointment={addAppointment}
+            interaction={interaction} 
+          />
+        )
+      }
+      <Calendar
+        dateCellRender={dateCellRender}
+      />
+    </div>      
   )
 }
 

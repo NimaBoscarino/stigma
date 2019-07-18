@@ -124,12 +124,4 @@ class Api::InteractionsController < ApplicationController
     }
   end
 
-  def appointments
-    interaction = Interaction.find(params[:interaction_id])
-    appointments = interaction.appointments
-
-    render :json => {
-      appointments: appointments
-    }
-  end
 end

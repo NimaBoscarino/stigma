@@ -36,7 +36,11 @@ const App = (props) => {
   }
 
   return (
-    <div className="App" style={{ height: '100%' }}>
+    <div className="App" style={{
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column'
+    }}>
       <Router>
         <Switch>          
           <RedirectHomeRoute exact path="/login" user={user} render={() => (

@@ -56,7 +56,7 @@ const StyledHeader = styled.header`
   max-width: 100%;
   background: black;
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-  height: 50px;
+  height: 7vh;
   display: flex;
   flex-direction: row;
   justify-content: center;

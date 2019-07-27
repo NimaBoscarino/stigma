@@ -52,7 +52,11 @@ export default (props) => {
             }}
             color="green">Books open!</Tag>)
           }          
-          <img style={{width: '100%'}} alt="example" src={details.avatar} />
+          <img style={{
+            width: '100%',
+            height: '250px',
+            objectFit: 'cover'
+          }} alt="example" src={details.avatar} />
         </div>
       }
       actions={[

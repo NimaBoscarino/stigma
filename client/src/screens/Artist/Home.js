@@ -37,7 +37,8 @@ const HomeScreen = ({ user }) => {
     <div style={{
       padding: '25px',
       display: 'flex',
-      flexDirection: 'row'
+      height: '100%',
+      flexDirection: 'row',
     }}>
       <div style={{
         width: '50%'
@@ -60,7 +61,8 @@ const HomeScreen = ({ user }) => {
         </div>
       </div>
       <div style={{
-        width: '50%'
+        width: '50%',
+        height: '100%'
       }}>
         <Calendar
           events={events}

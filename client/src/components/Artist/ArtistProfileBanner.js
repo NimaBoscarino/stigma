@@ -10,6 +10,9 @@ const BooksTag = styled(Tag)`
 
 const Avatar = styled.img`
   margin: 15px;
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
 `
 
 const InstagramHandle = styled.h3`

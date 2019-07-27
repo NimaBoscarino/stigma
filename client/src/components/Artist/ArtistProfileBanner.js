@@ -82,13 +82,17 @@ const ArtistProfileBanner = ({ user, addEvent }) => {
         justifyContent: 'center',
         alignItems: 'center'
       }}>
-        <Switch
-          checkedChildren={"Books Open"}
-          unCheckedChildren={"Books Closed"}
-          loading={booksOpen === null}
-          checked={booksOpen}
-          onChange={onChange}
-        />
+        <span style={{
+          width: '150px'
+        }}>
+          <Switch
+            checkedChildren={"Books Open"}
+            unCheckedChildren={"Books Closed"}
+            loading={booksOpen === null}
+            checked={booksOpen}
+            onChange={onChange}
+          />
+        </span>
         <CreateFlashEventModal
           user={user}
           addEvent={addEvent}

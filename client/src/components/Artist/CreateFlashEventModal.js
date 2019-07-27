@@ -87,7 +87,11 @@ class CreateFlashEventsModal extends React.Component {
   render() {
     return (
       <div>
-        <Button type="primary" onClick={this.showModal}>
+        <Button type="primary" 
+          style={{
+            margin: '5px'
+          }}
+          onClick={this.showModal}>
           New Flash Event
         </Button>
         <FlashEventCreateForm

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ArtistProfileBanner from '../../components/Artist/ArtistProfileBanner'
-import Calendar from '../../components/Artist/Calendar'
+import Calendar from '../../components/Artist/BigCalendar'
 import EventCard from '../../components/Artist/EventCard'
 import axios from 'axios'
 import { Switch } from 'antd'

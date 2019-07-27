@@ -129,8 +129,8 @@ conversation = Conversation.create(
 tattoo_job.reference_images.create url: 'https://i.pinimg.com/originals/24/b4/ac/24b4ac1a18eed9379d231bc06bb6a3a7.jpg'
 tattoo_job.reference_images.create url: 'https://i0.wp.com/brightercraft.com/wp-content/uploads/2018/10/img_3829.jpg?w=800&ssl=1'
 
-booking.appointments.create date: 8.days.from_now, name: '1st session', description: 'outlines and stuff', client: booking.client, artist: booking.artist
-booking.appointments.create date: 15.days.from_now, name: '2nd session', description: 'colours! bring something to eat', client: booking.client, artist: booking.artist
+booking.appointments.create date: 2.days.from_now, name: '1st session', description: 'outlines and stuff', client: booking.client, artist: booking.artist
+booking.appointments.create date: 5.days.from_now, name: '2nd session', description: 'colours! bring something to eat', client: booking.client, artist: booking.artist
 
 pam.photos.create url: '/assets/1.jpg'
 pam.photos.create url: '/assets/2.jpg'

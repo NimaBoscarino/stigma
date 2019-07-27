@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Calendar, Badge } from 'antd'
+import { Badge } from 'antd'
 import axios from 'axios'
 import moment from 'moment';
 import CreateAppointmentInviteModal from './Artist/CreateAppointmentInviteModal';
+import Calendar from './Artist/BigCalendar'
 
 const InteractionCalendar = ({ interaction, artist }) => {
   /*
@@ -41,7 +42,11 @@ const InteractionCalendar = ({ interaction, artist }) => {
   }
 
   return (
-    <div>
+    <div style={{
+      height: '550px',
+      display: 'flex',
+      flexDirection: 'column'
+    }}>
       {
         artist && (
           <CreateAppointmentInviteModal
@@ -50,10 +55,11 @@ const InteractionCalendar = ({ interaction, artist }) => {
           />
         )
       }
+     
       <Calendar
-        dateCellRender={dateCellRender}
+        events={appointments}
       />
-    </div>      
+    </div>
   )
 }
 

@@ -90,7 +90,8 @@ class CreateAppointmentInviteModal extends React.Component {
           type="primary"
           onClick={this.showModal}
           style={{
-            float: 'left'
+            float: 'left',
+            margin: '5px'
           }}  
         >
           Create Appointment

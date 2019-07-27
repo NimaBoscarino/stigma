@@ -7,7 +7,7 @@ import { Switch } from 'antd'
 import moment from 'moment'
 
 const HomeScreen = ({ user }) => {
-  const [date, setDate] = useState(moment());
+  const [date, setDate] = useState({start: new Date()});
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
@@ -27,11 +27,12 @@ const HomeScreen = ({ user }) => {
     setEvents(events.filter(e => e.id !== event.id))
   }
 
-  const eventsForDay = (value) => {
-    return events.filter(e => value.format('DD-MM-YYYY') === moment(e.date).format('DD-MM-YYYY'));
+  const eventsForDay = (day) => {
+    const value = day.start
+    return events.filter(e => moment(value).format('DD-MM-YYYY') === moment(e.date).format('DD-MM-YYYY'));
   }
 
-  const selectedDayEvents = date && eventsForDay(date)
+  const selectedDayEvents = date.start && eventsForDay(date)
 
   return (
     <div style={{
@@ -44,7 +45,7 @@ const HomeScreen = ({ user }) => {
         width: '50%'
       }}>
         <ArtistProfileBanner user={user} addEvent={addEvent} />
-        <h2>{date && `Events for: ${date.format('YYYY-MM-DD')}`}</h2>
+        <h2>{date.start && `Events for: ${moment(date.start).format('YYYY-MM-DD')}`}</h2>
         <div style={{
           display: 'flex',
           flexDirection: 'row'

@@ -6,7 +6,6 @@
     "actioncable": "^5.2.3",
     "antd": "^3.19.2",
     "axios": "^0.18.0",
-    "css-animation": "^1.6.0",
     "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-actioncable-provider": "^2.0.0",

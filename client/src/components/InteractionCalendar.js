@@ -16,9 +16,8 @@ const InteractionCalendar = ({ interaction, artist, artistName }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      let result;
-      let fullCalendar;
-      result = await axios.get(`/interactions/${interaction_id}/appointments`)
+      let fullCalendar = [];
+      let result = await axios.get(`/interactions/${interaction_id}/appointments`)
       fullCalendar = result.data.appointments
       if (artist) {
         result = await axios.get(`/artists/${artistName}/events?appointments=true`)

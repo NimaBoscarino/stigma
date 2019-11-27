@@ -9,4 +9,6 @@ class Interaction < ApplicationRecord
   scope :booked, -> { where(type: 'Booking') }
   scope :inquired, -> { where(type: 'Inquiry') }
   scope :applied, -> { where(type: 'Application') }
+  scope :closed, -> { where(type: 'Closed') }
+
 end

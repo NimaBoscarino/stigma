@@ -7,7 +7,6 @@ import Chat from '../../components/Chat'
 // This page is where the artist can interface with the client, who may be at any stage of the Interaction
 
 const ClientScreen = ({ interaction_id, user }) => {
-
   // use interaction_id to get the interaction
   // i realize I'd made this call before... 
   // it may be a good idea to bring in Redux soon? Maybe. Maybe not.
@@ -64,7 +63,7 @@ const ClientScreen = ({ interaction_id, user }) => {
             </div>
           )
         }
-        <InteractionTabsCard artist={true} interaction={interaction}/>
+        <InteractionTabsCard artist={true} artistName={user.username} interaction={interaction}/>
       </div>
       <div style={{
         width: '50%',

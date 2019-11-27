@@ -5,7 +5,7 @@ import moment from 'moment';
 import CreateAppointmentInviteModal from './Artist/CreateAppointmentInviteModal';
 import Calendar from './Artist/BigCalendar'
 
-const InteractionCalendar = ({ interaction, artist }) => {
+const InteractionCalendar = ({ interaction, artist, artistName }) => {
   /*
     This calendar is used to:
     1. see upcoming appointments
@@ -16,8 +16,20 @@ const InteractionCalendar = ({ interaction, artist }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(`/interactions/${interaction_id}/appointments`);
-      setAppointments(result.data.appointments);
+      let fullCalendar = [];
+      let result = await axios.get(`/interactions/${interaction_id}/appointments`)
+      fullCalendar = result.data.appointments
+      if (artist) {
+        result = await axios.get(`/artists/${artistName}/events?appointments=true`)
+        const allEvents = result.data.events
+        for (const event of allEvents) {
+          event.all = true;
+          if (!fullCalendar.some(item => item.date === event.date)) {
+            fullCalendar.push(event)
+          }
+        }
+      }
+      setAppointments(fullCalendar)
     };
 
     fetchData();
@@ -51,11 +63,11 @@ const InteractionCalendar = ({ interaction, artist }) => {
         artist && (
           <CreateAppointmentInviteModal
             addAppointment={addAppointment}
-            interaction={interaction} 
+            interaction={interaction}
           />
         )
       }
-     
+
       <Calendar
         events={appointments}
       />

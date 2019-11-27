@@ -14,11 +14,11 @@ const tabList = [
   },
 ];
 
-const InteractionTabsCard = ({ interaction, artist}) => {
+const InteractionTabsCard = ({ interaction, artist, artistName}) => {
   const [key, setKey] = useState('tab1')
   const contentList = {
     tab1: <ReferenceImages photos={interaction.images || []} />,
-    tab2: <InteractionCalendar artist={artist} interaction={interaction}/>,
+    tab2: <InteractionCalendar artist={artist} artistName={artistName} interaction={interaction}/>,
   }
   
   const onTabChange = (key, type) => {
